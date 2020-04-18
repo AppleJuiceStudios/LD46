@@ -72,6 +72,7 @@ func _process(delta: float) -> void:
 		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
+			print("Path is empty")
 		else:
 			if start_move_along_path(speed * delta):
 				_breaching_cooldow = breaching_speed
@@ -84,7 +85,7 @@ func _process(delta: float) -> void:
 			return
 		_breaching_cooldow -= delta
 		if _breaching_cooldow <= 0.0:
-			_breaching_target.brach()
+			_breaching_target.breach()
 			_breaching_cooldow += breaching_speed
 		
 	
@@ -111,6 +112,8 @@ func _on_door_area_entered(area: Area2D) -> void:
 		area.breaching_intruder = self
 		_breaching_target = area
 		_current_state = STATE_WALK_TO_DOOR
+		print("Found door")
+		print(area.global_position)
 
 
 func get_path_length(path: PoolVector2Array) -> float:

@@ -1,4 +1,4 @@
-extends CollisionShape2D
+extends Area2D
 
 var breaching_intruder : Node2D = null
 

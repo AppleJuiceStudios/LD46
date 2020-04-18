@@ -10,6 +10,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.button_index != BUTTON_LEFT or not event.pressed:
 		return
 	event
-	var new_path : = nav_2d.get_simple_path(character.global_position, event.global_position)
+	var new_path : = nav_2d.get_simple_path(
+		character.global_position, 
+		event.global_position / 2);
 	line_2d.points = new_path
 	character.path = new_path

@@ -50,15 +50,13 @@ func _process(delta: float) -> void:
 				_idle_target = Vector2.ZERO
 				return
 			
-			var direction : = polar2cartesian(IDLE_STEP_LENGTH, rand_range(0, 2 * PI))
-			var i : = 0
-			while (_path.empty() or get_path_length(_path) > 2 * IDLE_STEP_LENGTH) and i < IDLE_ANGLE_DEVISIONS :
-				_idle_target = global_position + direction
-				_path = nav_2d.get_simple_path(global_position, _idle_target)
-				direction = direction.rotated(PI / (IDLE_ANGLE_DEVISIONS * 2))
-				i += 1
-			if i == IDLE_ANGLE_DEVISIONS:
-				_idle_target = Vector2.ZERO
+			var nav_poly : PoolVector2Array = nav_2d.get_nav_pol_with_lowest_heat(global_position, 2.0)
+			_idle_target = get_random_point_in_polygon(nav_poly)
+			_path = nav_2d.get_simple_path(global_position, _idle_target)
+			if _path.empty():
+				print("Path error")
+			else:
+				print("Path success!")
 		
 		if _idle_target != Vector2.ZERO:
 			if start_move_along_path(speed_idle * delta):
@@ -70,7 +68,6 @@ func _process(delta: float) -> void:
 			_current_state = STATE_WALK_TO_GOAL
 			return
 		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
-		print(_path)
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
 			print("Path is empty")
@@ -92,6 +89,7 @@ func _process(delta: float) -> void:
 	
 # returns if it finished path
 func start_move_along_path(distance: float) -> bool:
+	nav_2d.add_heat(global_position, get_physics_process_delta_time())
 	_path.remove(0)
 	var start_point := position
 	for i in range(_path.size()):
@@ -122,3 +120,21 @@ func get_path_length(path: PoolVector2Array) -> float:
 	for i in range(path.size() - 1):
 		length += path[i].distance_to(path[i+1])
 	return length
+
+func get_random_point_in_polygon(points : PoolVector2Array) -> Vector2:
+	var minX : = 10000.0
+	var minY : = 10000.0
+	var maxX : = -10000.0
+	var maxY : = -10000.0
+	print("polygon:")
+	for i in range(points.size()):
+		print(points[i])
+		if points[i].x < minX:
+			minX = points[i].x
+		if points[i].y < minY:
+			minY = points[i].y
+		if points[i].x > maxX:
+			maxX = points[i].x
+		if points[i].y > maxY:
+			maxY = points[i].y
+	return Vector2(rand_range(minX, maxX), rand_range(minY, maxY))

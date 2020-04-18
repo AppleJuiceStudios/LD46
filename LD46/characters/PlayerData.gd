@@ -4,6 +4,9 @@ signal max_power_updated
 signal power_regen_updated
 signal power_updated
 
+const TILE_MAP_HEIGHT = 10
+const TILE_MAP_WIDTH = 18
+
 var max_power = 100 setget set_max_power
 var power_regen = 1.0 setget set_power_regen # regens X power per second
 var power = max_power setget set_power

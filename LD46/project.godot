@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="LD46"
-run/main_scene="res://levels/ai_playground.tscn"
+run/main_scene="res://levels/ai_playground_flo.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+PlayerData="*res://characters/PlayerData.gd"
 
 [rendering]
 

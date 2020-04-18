@@ -70,6 +70,7 @@ func _process(delta: float) -> void:
 			_current_state = STATE_WALK_TO_GOAL
 			return
 		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
+		print(_path)
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
 			print("Path is empty")
@@ -105,6 +106,8 @@ func start_move_along_path(distance: float) -> bool:
 
 
 func _on_door_area_entered(area: Area2D) -> void:
+	if _current_state == STATE_WALK_TO_DOOR or _current_state == STATE_BREACH_DOOR:
+		return
 	if area.breaching_intruder != null or not area.is_active():
 		return
 	var path : = nav_2d.get_simple_path(global_position, area.global_position)
@@ -112,8 +115,6 @@ func _on_door_area_entered(area: Area2D) -> void:
 		area.breaching_intruder = self
 		_breaching_target = area
 		_current_state = STATE_WALK_TO_DOOR
-		print("Found door")
-		print(area.global_position)
 
 
 func get_path_length(path: PoolVector2Array) -> float:

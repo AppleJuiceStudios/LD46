@@ -35,12 +35,12 @@ position = Vector2( 171.838, 54.4851 )
 
 [node name="Intruder" parent="." instance=ExtResource( 3 )]
 position = Vector2( 60.4725, 44.9053 )
-speed = 5.0
+speed = 40.0
 goal_path = NodePath("../Goal")
 nav_2d_path = NodePath("../Navigation2D")
 
 [node name="Intruder2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 60.4725, 44.9053 )
-speed = 5.0
+speed = 40.0
 goal_path = NodePath("../Goal")
 nav_2d_path = NodePath("../Navigation2D")

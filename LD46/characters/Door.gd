@@ -14,6 +14,13 @@ export var isOpen = true;
 export var isBreached = false;
 export var breachPointsLeft = 5;
 
+export var tileNameFloorOpen : String = "tile_floor";
+export var tileNameFloorClosed : String = "tile_floor_under_door";
+export var nodeTileMap : NodePath;
+onready var tileMap : TileMap = get_node(nodeTileMap);
+onready var idFloorOpen: int = tileMap.get_tileset().find_tile_by_name(tileNameFloorOpen);
+onready var idFloorClosed: int = tileMap.get_tileset().find_tile_by_name(tileNameFloorClosed);
+
 func _ready():
 	_updateTexture()
 	_setNavigatable(isOpen || isBreached);
@@ -45,7 +52,10 @@ func _updateTexture() -> void:
 
 
 func _setNavigatable(value:bool) -> void:
-	get_node("NavigationPolygonInstance").set_enabled(value);
+	if value:
+		tileMap.set_cellv(tileMap.world_to_map(global_position),idFloorOpen);
+	else:
+		tileMap.set_cellv(tileMap.world_to_map(global_position),idFloorClosed);
 	get_node("BreachBox1/CollisionShape2D").disabled = value;
 	get_node("BreachBox2/CollisionShape2D").disabled = value;
 	

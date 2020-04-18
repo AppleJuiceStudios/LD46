@@ -15,9 +15,11 @@ position = Vector2( 144, 208 )
 
 [node name="Door2" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 336, 48 )
+isOpen = false
 
 [node name="Door3" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 240, 48 )
+isOpen = false
 
 [node name="Door4" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 240, 272 )

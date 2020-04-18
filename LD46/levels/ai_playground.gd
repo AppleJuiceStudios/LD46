@@ -2,7 +2,7 @@ extends Node
 
 onready var nav_2d : Navigation2D = $Navigation2D
 onready var line_2d : Line2D = $Line2D
-onready var character : Sprite = $Character
+onready var character : Sprite = $VacuumRobot
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:

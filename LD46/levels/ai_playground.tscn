@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/ai_playground.gd" type="Script" id=2]
 [ext_resource path="res://characters/BasicAI.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/VacuumRobot.tscn" type="PackedScene" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+resource_local_to_scene = true
+flags = 4
+load_path = "res://.import/character.png-7d161e056639ffa8fae932e906cc0673.stex"
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
@@ -38,3 +44,8 @@ default_color = Color( 1, 0.4, 0.94902, 1 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 61.088, 73.5957 )
+texture = SubResource( 1 )
+
+[node name="VacuumRobot" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, 184 )
+speed = 100.0

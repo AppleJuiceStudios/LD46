@@ -10,7 +10,6 @@ outlines = [ PoolVector2Array( -16, -16, -16, 16, 16, 16, 16, -16 ) ]
 
 [node name="Door" type="Sprite"]
 position = Vector2( 16, 16 )
-z_index = 4
 texture = ExtResource( 2 )
 script = ExtResource( 1 )
 

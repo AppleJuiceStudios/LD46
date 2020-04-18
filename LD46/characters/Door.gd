@@ -1,9 +1,11 @@
 extends Sprite
 
-var _tex_open   = preload("res://assets/door/open.png")
-var _tex_closed = preload("res://assets/door/closed.png")
+var _tex_open     = preload("res://assets/door/open.png");
+var _tex_closed   = preload("res://assets/door/closed.png");
+var _tex_breached = preload("res://assets/door/breached.png");
 export var isOpen = true;
-
+export var isBreached = false;
+export var breachPointsLeft = 5;
 
 func _ready():
 	_updateTextureAndNavigation();
@@ -14,8 +16,12 @@ func _ready():
 #	pass
 
 func _updateTextureAndNavigation() -> void:
-	get_node("NavigationPolygonInstance").set_enabled(isOpen);
-	if isOpen:
+	if breachPointsLeft <= 0:
+		isBreached = true;
+	get_node("NavigationPolygonInstance").set_enabled(isOpen || isBreached);
+	if isBreached:
+		texture = _tex_breached;
+	elif isOpen:
 		texture = _tex_open;
 	else:
 		texture = _tex_closed;

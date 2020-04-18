@@ -1,7 +1,8 @@
 extends Sprite
 
 export var speed : = 60.0
-export var speed_idle := 20.0
+export var speed_idle : = 20.0
+export var breaching_speed : = 1.5
 export var goal_path : NodePath
 export var nav_2d_path : NodePath
 
@@ -19,6 +20,8 @@ const STATE_BREACH_DOOR : = 3
 var _current_state : = STATE_WALK_TO_GOAL
 var _path : = PoolVector2Array()
 var _idle_target : = Vector2.ZERO
+var _breaching_target : Area2D = null
+var _breaching_cooldow : = 0.0
 
 func _ready() -> void:
 	pass
@@ -60,7 +63,31 @@ func _process(delta: float) -> void:
 		if _idle_target != Vector2.ZERO:
 			if start_move_along_path(speed_idle * delta):
 				_idle_target = Vector2.ZERO
-
+	
+	elif _current_state == STATE_WALK_TO_DOOR:
+		if not _breaching_target.is_active():
+			_breaching_target.breaching_intruder = null
+			_current_state = STATE_WALK_TO_GOAL
+			return
+		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
+		if _path.empty():
+			_current_state = STATE_WALK_TO_GOAL
+		else:
+			if start_move_along_path(speed * delta):
+				_breaching_cooldow = breaching_speed
+				_current_state = STATE_BREACH_DOOR
+	
+	elif _current_state == STATE_BREACH_DOOR:
+		if not _breaching_target.is_active():
+			_breaching_target.breaching_intruder = null
+			_current_state = STATE_WALK_TO_GOAL
+			return
+		_breaching_cooldow -= delta
+		if _breaching_cooldow <= 0.0:
+			_breaching_target.brach()
+			_breaching_cooldow += breaching_speed
+		
+	
 # returns if it finished path
 func start_move_along_path(distance: float) -> bool:
 	_path.remove(0)
@@ -77,13 +104,17 @@ func start_move_along_path(distance: float) -> bool:
 
 
 func _on_door_area_entered(area: Area2D) -> void:
+	if area.breaching_intruder != null or not area.is_active():
+		return
 	var path : = nav_2d.get_simple_path(global_position, area.global_position)
 	if get_path_length(path) < 2* 60:
+		area.breaching_intruder = self
+		_breaching_target = area
 		_current_state = STATE_WALK_TO_DOOR
 
 
 func get_path_length(path: PoolVector2Array) -> float:
 	var length : = 0.0
-	for i in range(path.size()):
+	for i in range(path.size() - 1):
 		length += path[i].distance_to(path[i+1])
 	return length

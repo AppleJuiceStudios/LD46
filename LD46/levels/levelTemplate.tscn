@@ -11,4 +11,4 @@ tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_quadrant_size = 32
 format = 1
-tile_data = PoolIntArray( 0, 1, 0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 0, 0 )
+tile_data = PoolIntArray( 0, 1, 0, 1, 2, 0, 2, 3, 0, 3, 4, 0, 4, 0, 0, 5, 5, 0 )

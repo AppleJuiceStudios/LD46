@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://characters/BasicAI.gd" type="Script" id=1]
-
-
+[ext_resource path="res://assets/character.png" type="Texture" id=2]
 
 [node name="Sprite" type="Sprite"]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -16 )
 script = ExtResource( 1 )
+speed = 100.0

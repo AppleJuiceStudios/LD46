@@ -38,6 +38,11 @@ func _updateTexture() -> void:
 		texture = _tex_open;
 	else:
 		texture = _tex_closed;
+	if isOpen:
+		get_node("HoverMenu/BtnOpenClose").text = "Close Door";
+	else:
+		get_node("HoverMenu/BtnOpenClose").text = "Open Door";
+
 
 func _setNavigatable(value:bool) -> void:
 	get_node("NavigationPolygonInstance").set_enabled(value);
@@ -58,16 +63,41 @@ func _updateBreachBarTexture() -> void:
 		get_node("Status Bar").texture = _tex_bar_0;
 	elif breachPointsLeft <= 0:
 		get_node("Status Bar").visible = false;
-	
-func _on_Button_pressed():
+
+
+func _on_BtnReset_pressed():
+	if !isBreached:
+		breachPointsLeft = 5;
+		_updateTexture()
+
+func _on_BtnOpenClose_pressed():
+	PlayerData.power -= 10;
 	isOpen = !isOpen;
 	_updateTexture()
 	_setNavigatable(isOpen || isBreached);
 
-
 func _on_Button_mouse_entered():
-	get_node("HoverMenu").popup();
-
+	if !isBreached:
+		get_node("HoverMenu").popup(
+			Rect2(get_viewport().get_mouse_position() - Vector2(5,5),
+				 Vector2(140,70)));
 
 func _on_Button_mouse_exited():
-	get_node("HoverMenu").hide();
+	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+		get_node("HoverMenu").hide();
+
+func _on_HoverMenu_mouse_exited():
+	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+		get_node("HoverMenu").hide();
+
+func _on_Panel_mouse_exited():
+	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+		get_node("HoverMenu").hide();
+
+func _on_BtnReset_mouse_exited():
+	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+		get_node("HoverMenu").hide();
+
+func _on_BtnOpenClose_mouse_exited():
+	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+		get_node("HoverMenu").hide();

@@ -63,3 +63,11 @@ func _on_Button_pressed():
 	isOpen = !isOpen;
 	_updateTexture()
 	_setNavigatable(isOpen || isBreached);
+
+
+func _on_Button_mouse_entered():
+	get_node("HoverMenu").popup();
+
+
+func _on_Button_mouse_exited():
+	get_node("HoverMenu").hide();

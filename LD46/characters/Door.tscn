@@ -38,20 +38,20 @@ navpoly = SubResource( 1 )
 enabled = false
 
 [node name="BreachBox1" type="Area2D" parent="."]
+position = Vector2( -32, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox1"]
-position = Vector2( -32, 0 )
 shape = SubResource( 2 )
 
 [node name="BreachBox2" type="Area2D" parent="."]
+position = Vector2( 32, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox2"]
-position = Vector2( 32, 0 )
 shape = SubResource( 2 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 onready var nav_2d : Navigation2D = $Navigation2D
 onready var line_2d : Line2D = $Line2D
@@ -12,6 +12,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	event
 	var new_path : = nav_2d.get_simple_path(
 		character.global_position, 
-		event.global_position / 2);
+		get_global_mouse_position());
 	line_2d.points = new_path
 	character.path = new_path

@@ -6,9 +6,11 @@ export var breaching_speed : = 1.5
 export var max_motivation : = 100.0
 export var goal_path : NodePath
 export var nav_2d_path : NodePath
+export var home_path : NodePath
 
 onready var goal : Node2D = get_node(goal_path)
 onready var nav_2d : Navigation2D = get_node(nav_2d_path)
+onready var home : Node2D = get_node(home_path)
 onready var motivation_bar : ProgressBar = $MotivationBar
 
 const IDLE_STEP_LENGTH : = 32
@@ -21,19 +23,28 @@ const STATE_BREACH_DOOR : = 3
 
 var _current_state : = STATE_WALK_TO_GOAL
 var _motivation : = max_motivation
+var _returning_home : = false
 var _path : = PoolVector2Array()
 var _idle_target : = Vector2.ZERO
 var _breaching_target : Area2D = null
 var _breaching_cooldow : = 0.0
 
 func _ready() -> void:
+	print("ready")
+	print(goal_path)
 	motivation_bar.max_value = max_motivation
 	motivation_bar.value = _motivation
 	pass
 
 func _process(delta: float) -> void:
-	if _motivation < 0.0 :
+	if _returning_home:
+		if global_position.distance_to(home.global_position) < 4:
+			queue_free()
+			return
+	if _motivation <= 0.0 :
 		_motivation = 0.0
+		_returning_home = true
+		goal = home
 	elif _motivation > max_motivation:
 		_motivation = max_motivation
 	motivation_bar.value = _motivation
@@ -46,7 +57,7 @@ func _process(delta: float) -> void:
 			start_move_along_path(speed * delta * motivation_spee_factor())
 	
 	elif _current_state == STATE_IDLE:
-		_motivation -= delta * 0.5
+		_motivation -= delta * 2
 		
 		if _idle_target != Vector2.ZERO:
 			_path = nav_2d.get_simple_path(global_position, _idle_target)

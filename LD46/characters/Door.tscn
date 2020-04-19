@@ -86,7 +86,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_Button_mouse_entered"]
-[connection signal="mouse_exited" from="ReferenceRect" to="." method="_on_Button_mouse_exited"]
+[connection signal="mouse_exited" from="ReferenceRect" to="." method="_hover_exited"]
 [connection signal="mouse_exited" from="HoverMenu" to="." method="_hover_exited"]
 [connection signal="mouse_exited" from="HoverMenu/Panel" to="." method="_hover_exited"]
 [connection signal="mouse_exited" from="HoverMenu/BtnReset" to="." method="_hover_exited"]

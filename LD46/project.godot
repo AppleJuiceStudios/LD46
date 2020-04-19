@@ -38,9 +38,8 @@ window/stretch/shrink=2.0
 
 [layer_names]
 
-2d_physics/layer_1="walls"
-2d_physics/layer_2="doors"
-2d_physics/layer_3="intruders"
+2d_physics/layer_1="intruders"
+2d_physics/layer_2="door_breach_points"
 
 [rendering]
 

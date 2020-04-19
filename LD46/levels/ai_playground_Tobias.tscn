@@ -4,10 +4,11 @@
 [ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
 [ext_resource path="res://characters/Intruder.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/Door_h.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/VacuumRobot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/VacuumRobot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/ai_playground.gd" type="Script" id=6]
 [ext_resource path="res://assets/soundtrack.ogg" type="AudioStream" id=7]
 [ext_resource path="res://characters/Door_v.tscn" type="PackedScene" id=8]
+
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )

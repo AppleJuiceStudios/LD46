@@ -3,8 +3,11 @@ extends Sprite
 export var speed : = 400.0
 var path : = PoolVector2Array() setget set_path
 
+onready var collider : Area2D = $Area2D
+
 
 func _ready() -> void:
+	collider.monitorable = false
 	set_process(false)
 
 func _process(delta: float) -> void:
@@ -14,6 +17,8 @@ func move_along_path(distance: float) -> void:
 	var start_point := position
 	if path.size() == 0:
 		get_parent().get_node("RoombaLine").points = [];
+		collider.monitorable = false
+		set_process(false)
 	for i in range(path.size()):
 		var distance_to_next : = start_point.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
@@ -22,6 +27,7 @@ func move_along_path(distance: float) -> void:
 			break;
 		elif distance <= 0.0:
 			position = path[0]
+			collider.monitorable = false
 			set_process(false)
 			break
 		distance -= distance_to_next
@@ -32,4 +38,5 @@ func set_path(value : PoolVector2Array) -> void:
 	path = value
 	if value.size() == 0:
 		return
+	collider.monitorable = true
 	set_process(true)

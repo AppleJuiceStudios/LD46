@@ -21,6 +21,7 @@ const STATE_WALK_TO_GOAL : = 0
 const STATE_IDLE : = 1
 const STATE_WALK_TO_DOOR : = 2
 const STATE_BREACH_DOOR : = 3
+const STATE_FALLING : = 4
 
 var _current_state : = STATE_WALK_TO_GOAL
 var _motivation : = max_motivation
@@ -110,7 +111,12 @@ func _process(delta: float) -> void:
 		if _breaching_cooldow <= 0.0:
 			_breaching_target.breach()
 			_breaching_cooldow += breaching_speed / motivation_spee_factor()
-		
+	
+	elif _current_state == STATE_FALLING:
+		if anim_player.current_animation_position >= anim_player.current_animation_length:
+			_current_state = STATE_WALK_TO_GOAL
+			update_animation()
+	
 	
 # returns if it finished path
 func start_move_along_path(distance: float) -> bool:
@@ -192,3 +198,15 @@ func update_animation() -> void:
 			anim_player.play("punch")
 		elif i == 3:
 			anim_player.play("shoot")
+	elif _current_state == STATE_FALLING:
+		anim_player.play("fall")
+
+
+func _on_hit_by_vacuum_robot(area: Area2D) -> void:
+	annoy(15)
+	if _current_state == STATE_BREACH_DOOR:
+		return
+	if _current_state == STATE_WALK_TO_DOOR:
+		_breaching_target.breaching_intruder = null
+	_current_state = STATE_FALLING
+	update_animation()

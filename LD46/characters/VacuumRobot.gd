@@ -15,8 +15,9 @@ func move_along_path(distance: float) -> void:
 	for i in range(path.size()):
 		var distance_to_next : = start_point.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:
-			position = start_point.linear_interpolate(path[0], distance / distance_to_next)
-			break
+			position = start_point.linear_interpolate(path[0], distance / distance_to_next);
+			rotation_degrees = ((position - start_point).angle() * 57.2958) + 90;
+			break;
 		elif distance <= 0.0:
 			position = path[0]
 			set_process(false)

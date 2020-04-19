@@ -41,6 +41,7 @@ window/stretch/shrink=2.0
 2d_physics/layer_1="intruders"
 2d_physics/layer_2="breach_points"
 2d_physics/layer_3="vacuum_robot"
+2d_physics/layer_4="speaker_area"
 
 [rendering]
 

@@ -12,6 +12,7 @@ onready var goal : Node2D = get_node(goal_path)
 onready var nav_2d : Navigation2D = get_node(nav_2d_path)
 onready var home : Node2D = get_node(home_path)
 onready var motivation_bar : ProgressBar = $MotivationBar
+onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 const IDLE_STEP_LENGTH : = 32
 const IDLE_ANGLE_DEVISIONS : = 16
@@ -53,11 +54,12 @@ func _process(delta: float) -> void:
 		_path = nav_2d.get_simple_path(global_position, goal.global_position)
 		if _path.empty():
 			_current_state = STATE_IDLE
+			update_animation()
 		else:
 			start_move_along_path(speed * delta * motivation_spee_factor())
 	
 	elif _current_state == STATE_IDLE:
-		_motivation -= delta * 2
+		_motivation -= delta * 0.5
 		
 		if _idle_target != Vector2.ZERO:
 			_path = nav_2d.get_simple_path(global_position, _idle_target)
@@ -71,6 +73,7 @@ func _process(delta: float) -> void:
 			if not _path.empty():
 				_current_state = STATE_WALK_TO_GOAL
 				_idle_target = Vector2.ZERO
+				update_animation()
 				return
 			
 			var nav_poly : PoolVector2Array = nav_2d.get_nav_pol_with_lowest_heat(global_position, 2.0)
@@ -85,19 +88,23 @@ func _process(delta: float) -> void:
 		if not _breaching_target.is_active():
 			_breaching_target.breaching_intruder = null
 			_current_state = STATE_WALK_TO_GOAL
+			update_animation()
 			return
 		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
+			update_animation()
 		else:
 			if start_move_along_path(speed * delta * motivation_spee_factor()):
 				_breaching_cooldow = breaching_speed / motivation_spee_factor()
 				_current_state = STATE_BREACH_DOOR
+				update_animation()
 	
 	elif _current_state == STATE_BREACH_DOOR:
 		if not _breaching_target.is_active():
 			_breaching_target.breaching_intruder = null
 			_current_state = STATE_WALK_TO_GOAL
+			update_animation()
 			return
 		_breaching_cooldow -= delta
 		if _breaching_cooldow <= 0.0:
@@ -109,6 +116,12 @@ func _process(delta: float) -> void:
 func start_move_along_path(distance: float) -> bool:
 	nav_2d.add_heat(global_position, get_physics_process_delta_time())
 	_path.remove(0)
+	if not _path.empty():
+		if _path[0].x < global_position.x:
+			flip_h = true
+		elif _path[0].x > global_position.x:
+			flip_h = false
+		
 	var start_point := position
 	for i in range(_path.size()):
 		var distance_to_next : = start_point.distance_to(_path[0])
@@ -131,6 +144,7 @@ func _on_door_area_entered(area: Area2D) -> void:
 		area.breaching_intruder = self
 		_breaching_target = area
 		_current_state = STATE_WALK_TO_DOOR
+		update_animation()
 
 
 func get_path_length(path: PoolVector2Array) -> float:
@@ -160,3 +174,21 @@ func motivation_spee_factor() -> float:
 
 func annoy(amount : float) -> void:
 	_motivation -= amount
+
+func update_animation() -> void:
+	if _current_state == STATE_IDLE:
+		anim_player.play("walk", -1, 0.5)
+	elif _current_state == STATE_WALK_TO_GOAL:
+		anim_player.play("walk")
+	elif _current_state == STATE_WALK_TO_DOOR:
+		anim_player.play("walk")
+	elif _current_state == STATE_BREACH_DOOR:
+		var i = randi() % 4;
+		if i == 0:
+			anim_player.play("jump_kick")
+		elif i == 1:
+			anim_player.play("kick")
+		elif i == 2:
+			anim_player.play("punch")
+		elif i == 3:
+			anim_player.play("shoot")

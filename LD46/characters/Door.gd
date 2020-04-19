@@ -16,6 +16,7 @@ var _tex_bar_4    = preload("res://assets/door/bar_4.png");
 export var isOpen = false;
 export var isBreached = false;
 export var breachPointsLeft = 5;
+var _bodyCount = 0;
 
 export var tileNameFloorOpen : String = "floor_walkable";
 export var tileNameFloorClosed : String = "floor_not_walkable";
@@ -81,14 +82,16 @@ func _updateBreachBarTexture() -> void:
 
 func _on_BtnReset_pressed():
 	if !isBreached:
+		PlayerData.power -= 30;
 		breachPointsLeft = 5;
 		_updateTexture()
 
 func _on_BtnOpenClose_pressed():
-	PlayerData.power -= 10;
-	isOpen = !isOpen;
-	_updateTexture()
-	_setNavigatable(isOpen || isBreached);
+	if _bodyCount == 0:
+		PlayerData.power -= 10;
+		isOpen = !isOpen;
+		_updateTexture()
+		_setNavigatable(isOpen || isBreached);
 
 func _on_Button_mouse_entered():
 	if !isBreached:
@@ -99,3 +102,10 @@ func _on_Button_mouse_entered():
 func _hover_exited():
 	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
 		get_node("HoverMenu").hide();
+
+
+func _on_DoorClosingCollision_area_entered(area):
+	_bodyCount += 1;
+	
+func _on_DoorClosingCollision_area_exited(area):
+	_bodyCount -= 1;

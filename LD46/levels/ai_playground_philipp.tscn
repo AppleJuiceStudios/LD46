@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
+[ext_resource path="res://characters/Intruder.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/VacuumRobot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/ai_playground.gd" type="Script" id=6]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 983049, 1, 0, 458757, 2, 0, 720901, 3, 0, 983041, 4, 0, 458757, 5, 0, 983045, 6, 0, 983045, 7, 0, 983045, 8, 0, 983045, 9, 0, 983045, 10, 0, 983045, 11, 0, 983045, 12, 0, 983045, 13, 0, 983045, 14, 0, 983045, 15, 0, 983045, 16, 0, 720901, 17, 0, 983043, 65536, 0, 851978, 65537, 2, 0, 65538, 2, 0, 65539, 0, 786442, 65540, 2, 0, 65541, 2, 0, 65542, 2, 0, 65543, 2, 0, 65544, 2, 0, 65545, 2, 0, 65546, 6, 0, 65547, 2, 0, 65548, 2, 0, 65549, 2, 0, 65550, 2, 0, 65551, 2, 0, 65552, 2, 0, 65553, 0, 917514, 131072, 0, 983050, 131073, 2, 0, 131074, 2, 0, 131075, 0, 720906, 131076, 2, 0, 131077, 2, 0, 131078, 2, 0, 131079, 0, 458763, 131080, 2, 0, 131081, 2, 0, 131082, 0, 983051, 131083, 2, 0, 131084, 2, 0, 131085, 2, 0, 131086, 2, 0, 131087, 2, 0, 131088, 2, 0, 131089, 0, 983050, 196608, 0, 983050, 196609, 2, 0, 196610, 2, 0, 196611, 0, 983052, 196612, 0, 917509, 196613, 0, 983045, 196614, 0, 851973, 196615, 0, 983046, 196616, 2, 0, 196617, 2, 0, 196618, 0, 983050, 196619, 2, 0, 196620, 2, 0, 196621, 2, 0, 196622, 2, 0, 196623, 2, 0, 196624, 2, 0, 196625, 0, 983050, 262144, 0, 983050, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 262154, 0, 458762, 262155, 2, 0, 262156, 2, 0, 262157, 2, 0, 262158, 2, 0, 262159, 2, 0, 262160, 2, 0, 262161, 0, 458762, 327680, 0, 983050, 327681, 2, 0, 327682, 2, 0, 327683, 0, 720907, 327684, 2, 0, 327685, 0, 458761, 327686, 0, 196613, 327687, 0, 983041, 327688, 0, 458757, 327689, 0, 851973, 327690, 0, 983046, 327691, 2, 0, 327692, 2, 0, 327693, 2, 0, 327694, 0, 983049, 327695, 0, 458757, 327696, 0, 589829, 327697, 0, 983042, 393216, 0, 983050, 393217, 2, 0, 393218, 2, 0, 393219, 0, 983052, 393220, 0, 786437, 393221, 0, 851974, 393222, 2, 0, 393223, 0, 786442, 393224, 2, 0, 393225, 2, 0, 393226, 2, 0, 393227, 2, 0, 393228, 2, 0, 393229, 2, 0, 393230, 0, 851978, 393231, 2, 0, 393232, 2, 0, 393233, 0, 917514, 458752, 0, 983050, 458753, 2, 0, 458754, 2, 0, 458755, 2, 0, 458756, 2, 0, 458757, 2, 0, 458758, 2, 0, 458759, 0, 983054, 458760, 2, 0, 458761, 2, 0, 458762, 2, 0, 458763, 2, 0, 458764, 2, 0, 458765, 2, 0, 458766, 0, 983054, 458767, 2, 0, 458768, 2, 0, 458769, 0, 983050, 524288, 0, 720906, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 2, 0, 524295, 2, 0, 524296, 2, 0, 524297, 2, 0, 524298, 2, 0, 524299, 2, 0, 524300, 2, 0, 524301, 2, 0, 524302, 2, 0, 524303, 2, 0, 524304, 2, 0, 524305, 0, 458762, 589824, 0, 983052, 589825, 0, 917509, 589826, 0, 983045, 589827, 0, 983045, 589828, 0, 983045, 589829, 0, 983045, 589830, 0, 983045, 589831, 0, 983045, 589832, 0, 983045, 589833, 0, 983045, 589834, 0, 983045, 589835, 0, 983045, 589836, 0, 983045, 589837, 0, 983045, 589838, 0, 983045, 589839, 0, 983045, 589840, 0, 851973, 589841, 0, 983046 )
+
+[node name="Door1" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 112, 144 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door2" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 336, 48 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door3" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 240, 48 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door4" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 240, 272 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door5" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 464, 272 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 2.0
+default_color = Color( 1, 0.4, 0.94902, 1 )
+
+[node name="Goal" type="Node2D" parent="."]
+position = Vector2( 512, 224 )
+
+[node name="VacuumRobot" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, 184 )
+speed = 100.0
+
+[node name="Intruder" parent="." instance=ExtResource( 3 )]
+position = Vector2( 43.9248, 72 )
+goal_path = NodePath("../Goal")
+nav_2d_path = NodePath("../Navigation2D")
+
+[node name="Intruder2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 56.1133, 56.2266 )
+goal_path = NodePath("../Goal")
+nav_2d_path = NodePath("../Navigation2D")
+
+[node name="Intruder3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 82.2828, 54.7927 )
+goal_path = NodePath("../Goal")
+nav_2d_path = NodePath("../Navigation2D")

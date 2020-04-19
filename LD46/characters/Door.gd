@@ -10,12 +10,12 @@ var _tex_bar_2    = preload("res://assets/door/bar_2.png");
 var _tex_bar_3    = preload("res://assets/door/bar_3.png");
 var _tex_bar_4    = preload("res://assets/door/bar_4.png");
 
-export var isOpen = true;
+export var isOpen = false;
 export var isBreached = false;
 export var breachPointsLeft = 5;
 
-export var tileNameFloorOpen : String = "tile_floor";
-export var tileNameFloorClosed : String = "tile_floor_under_door";
+export var tileNameFloorOpen : String = "floor_walkable";
+export var tileNameFloorClosed : String = "floor_not_walkable";
 export var nodeTileMap : NodePath;
 onready var tileMap : TileMap = get_node(nodeTileMap);
 onready var idFloorOpen: int = tileMap.get_tileset().find_tile_by_name(tileNameFloorOpen);

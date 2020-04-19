@@ -4,6 +4,9 @@ var _tex_open     = preload("res://assets/door/open.png");
 var _tex_closed   = preload("res://assets/door/closed.png");
 var _tex_breached = preload("res://assets/door/breached.png");
 
+var _txt_open     = preload("res://assets/door/txt_OpenDoor.png");
+var _txt_close    = preload("res://assets/door/txt_CloseDoor.png");
+
 var _tex_bar_0    = preload("res://assets/door/bar_0.png");
 var _tex_bar_1    = preload("res://assets/door/bar_1.png");
 var _tex_bar_2    = preload("res://assets/door/bar_2.png");
@@ -46,9 +49,9 @@ func _updateTexture() -> void:
 	else:
 		texture = _tex_closed;
 	if isOpen:
-		get_node("HoverMenu/BtnOpenClose").text = "Close Door";
+		get_node("HoverMenu/BtnOpenClose").icon = _txt_close;
 	else:
-		get_node("HoverMenu/BtnOpenClose").text = "Open Door";
+		get_node("HoverMenu/BtnOpenClose").icon = _txt_open;
 
 
 func _setNavigatable(value:bool) -> void:
@@ -92,22 +95,6 @@ func _on_Button_mouse_entered():
 			Rect2(get_viewport().get_mouse_position() - Vector2(5,5),
 				 Vector2(140,70)));
 
-func _on_Button_mouse_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
-		get_node("HoverMenu").hide();
-
-func _on_HoverMenu_mouse_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
-		get_node("HoverMenu").hide();
-
-func _on_Panel_mouse_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
-		get_node("HoverMenu").hide();
-
-func _on_BtnReset_mouse_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
-		get_node("HoverMenu").hide();
-
-func _on_BtnOpenClose_mouse_exited():
+func _hover_exited():
 	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
 		get_node("HoverMenu").hide();

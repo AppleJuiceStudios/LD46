@@ -98,11 +98,11 @@ func _on_BtnOpenClose_pressed():
 func _on_Button_mouse_entered():
 	if !isBreached:
 		get_node("HoverMenu").popup(
-			Rect2(get_viewport().get_mouse_position() - Vector2(5,5),
+			Rect2(get_global_mouse_position() - Vector2(5,5),
 				 Vector2(140,70)));
 
 func _hover_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_viewport().get_mouse_position()):
+	if !get_node("HoverMenu").get_rect().has_point(get_global_mouse_position()):
 		get_node("HoverMenu").hide();
 
 

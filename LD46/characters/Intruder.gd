@@ -3,11 +3,13 @@ extends Sprite
 export var speed : = 60.0
 export var speed_idle : = 20.0
 export var breaching_speed : = 1.5
+export var max_motivation : = 100.0
 export var goal_path : NodePath
 export var nav_2d_path : NodePath
 
 onready var goal : Node2D = get_node(goal_path)
 onready var nav_2d : Navigation2D = get_node(nav_2d_path)
+onready var motivation_bar : ProgressBar = $MotivationBar
 
 const IDLE_STEP_LENGTH : = 32
 const IDLE_ANGLE_DEVISIONS : = 16
@@ -18,24 +20,34 @@ const STATE_WALK_TO_DOOR : = 2
 const STATE_BREACH_DOOR : = 3
 
 var _current_state : = STATE_WALK_TO_GOAL
+var _motivation : = max_motivation
 var _path : = PoolVector2Array()
 var _idle_target : = Vector2.ZERO
 var _breaching_target : Area2D = null
 var _breaching_cooldow : = 0.0
 
 func _ready() -> void:
+	motivation_bar.max_value = max_motivation
+	motivation_bar.value = _motivation
 	pass
 
 func _process(delta: float) -> void:
+	if _motivation < 0.0 :
+		_motivation = 0.0
+	elif _motivation > max_motivation:
+		_motivation = max_motivation
+	motivation_bar.value = _motivation
 	
 	if _current_state == STATE_WALK_TO_GOAL:
 		_path = nav_2d.get_simple_path(global_position, goal.global_position)
 		if _path.empty():
 			_current_state = STATE_IDLE
 		else:
-			start_move_along_path(speed * delta)
+			start_move_along_path(speed * delta * motivation_spee_factor())
 	
 	elif _current_state == STATE_IDLE:
+		_motivation -= delta * 0.5
+		
 		if _idle_target != Vector2.ZERO:
 			_path = nav_2d.get_simple_path(global_position, _idle_target)
 			if _path.empty():
@@ -55,7 +67,7 @@ func _process(delta: float) -> void:
 			_path = nav_2d.get_simple_path(global_position, _idle_target)
 		
 		if _idle_target != Vector2.ZERO:
-			if start_move_along_path(speed_idle * delta):
+			if start_move_along_path(speed_idle * delta * motivation_spee_factor()):
 				_idle_target = Vector2.ZERO
 	
 	elif _current_state == STATE_WALK_TO_DOOR:
@@ -67,8 +79,8 @@ func _process(delta: float) -> void:
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
 		else:
-			if start_move_along_path(speed * delta):
-				_breaching_cooldow = breaching_speed
+			if start_move_along_path(speed * delta * motivation_spee_factor()):
+				_breaching_cooldow = breaching_speed / motivation_spee_factor()
 				_current_state = STATE_BREACH_DOOR
 	
 	elif _current_state == STATE_BREACH_DOOR:
@@ -79,7 +91,7 @@ func _process(delta: float) -> void:
 		_breaching_cooldow -= delta
 		if _breaching_cooldow <= 0.0:
 			_breaching_target.breach()
-			_breaching_cooldow += breaching_speed
+			_breaching_cooldow += breaching_speed / motivation_spee_factor()
 		
 	
 # returns if it finished path
@@ -131,3 +143,9 @@ func get_random_point_in_polygon(points : PoolVector2Array) -> Vector2:
 		if points[i].y > maxY:
 			maxY = points[i].y
 	return Vector2(rand_range(minX, maxX), rand_range(minY, maxY))
+
+func motivation_spee_factor() -> float:
+	return 0.5 + _motivation / max_motivation / 2
+
+func annoy(amount : float) -> void:
+	_motivation -= amount

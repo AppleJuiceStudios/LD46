@@ -99,7 +99,7 @@ func _on_Button_mouse_entered():
 	if !isBreached:
 		get_node("HoverMenu").popup(
 			Rect2(get_global_mouse_position() - Vector2(5,5),
-				 Vector2(140,70)));
+				 Vector2(65,40)));
 
 func _hover_exited():
 	if !get_node("HoverMenu").get_rect().has_point(get_global_mouse_position()):

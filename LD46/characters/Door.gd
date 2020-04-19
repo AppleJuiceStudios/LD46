@@ -33,10 +33,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func getting_hit() -> void:
+func getting_hit() -> bool:
 	breachPointsLeft -= 1;
 	_updateTexture()
 	_setNavigatable(isOpen || isBreached);
+	return isBreached;
 
 func _updateTexture() -> void:
 	if breachPointsLeft <= 0:

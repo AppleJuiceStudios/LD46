@@ -12,6 +12,8 @@ func _process(delta: float) -> void:
 
 func move_along_path(distance: float) -> void:
 	var start_point := position
+	if path.size() == 0:
+		get_parent().get_node("RoombaLine").points = [];
 	for i in range(path.size()):
 		var distance_to_next : = start_point.distance_to(path[0])
 		if distance <= distance_to_next and distance >= 0.0:

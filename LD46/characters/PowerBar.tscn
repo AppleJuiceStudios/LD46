@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/PowerBar.gd" type="Script" id=1]
+[ext_resource path="res://assets/powerBar/progress.png" type="Texture" id=2]
+[ext_resource path="res://assets/powerBar/over.png" type="Texture" id=3]
+[ext_resource path="res://assets/powerBar/under.png" type="Texture" id=4]
+
+[node name="PowerBar" type="TextureProgress"]
+margin_right = 112.0
+margin_bottom = 16.0
+texture_under = ExtResource( 4 )
+texture_over = ExtResource( 3 )
+texture_progress = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerTimer" type="Timer" parent="."]
+autostart = true
+[connection signal="timeout" from="PowerTimer" to="." method="_on_PowerTimer_timeout"]

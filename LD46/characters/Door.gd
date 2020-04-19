@@ -17,6 +17,8 @@ export var isOpen = false;
 export var isBreached = false;
 export var breachPointsLeft = 5;
 var _bodyCount = 0;
+var _powerMoveDoor = 10;
+var _powerResetDoor = 30;
 
 export var tileNameFloorOpen : String = "floor_walkable";
 export var tileNameFloorClosed : String = "floor_not_walkable";
@@ -81,14 +83,14 @@ func _updateBreachBarTexture() -> void:
 
 
 func _on_BtnReset_pressed():
-	if !isBreached:
-		PlayerData.power -= 30;
+	if !isBreached && PlayerData.power >= _powerResetDoor:
+		PlayerData.power -= _powerResetDoor;
 		breachPointsLeft = 5;
 		_updateTexture()
 
 func _on_BtnOpenClose_pressed():
-	if _bodyCount == 0:
-		PlayerData.power -= 10;
+	if _bodyCount == 0 && PlayerData.power >= _powerMoveDoor:
+		PlayerData.power -= _powerMoveDoor;
 		isOpen = !isOpen;
 		_updateTexture()
 		_setNavigatable(isOpen || isBreached);

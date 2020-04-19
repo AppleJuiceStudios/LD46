@@ -1,11 +1,28 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://characters/TargetServer.gd" type="Script" id=1]
-[ext_resource path="res://assets/icon.png" type="Texture" id=2]
-[ext_resource path="res://characters/TargetServerBreach.gd" type="Script" id=3]
+[ext_resource path="res://objects/TargetServer.gd" type="Script" id=1]
+[ext_resource path="res://assets/server.png" type="Texture" id=2]
+[ext_resource path="res://objects/TargetServerBreach.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "blink"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
 
 [node name="TargetServer" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,5 +68,10 @@ script = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
+hframes = 9
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "blink"
+anims/blink = SubResource( 2 )

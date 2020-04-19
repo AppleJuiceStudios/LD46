@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "jump_kick"
 length = 0.4
 loop = true
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=7]
 resource_name = "kick"
 length = 0.2
 loop = true
@@ -65,7 +65,7 @@ tracks/0/keys = {
 "values": [ 77, 78 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=8]
 resource_name = "punch"
 length = 0.2
 loop = true
@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ 70, 71 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=9]
 resource_name = "run"
 length = 0.7
 loop = true
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18, 19, 20 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=10]
 resource_name = "shoot"
 length = 0.7
 loop = true
@@ -116,8 +116,7 @@ tracks/0/keys = {
 "values": [ 161, 162, 163, 164, 165, 166, 167 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "walk"
+[sub_resource type="Animation" id=11]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -133,8 +132,7 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "walk_slow"
+[sub_resource type="Animation" id=12]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -155,7 +153,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 vframes = 41
 hframes = 7
-frame = 167
+frame = 70
 script = ExtResource( 2 )
 
 [node name="DoorDetector" type="Area2D" parent="."]
@@ -187,11 +185,11 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "walk"
 anims/idle = SubResource( 5 )
-anims/jump_kick = SubResource( 8 )
-anims/kick = SubResource( 9 )
-anims/punch = SubResource( 10 )
-anims/run = SubResource( 11 )
-anims/shoot = SubResource( 12 )
-anims/walk = SubResource( 6 )
-anims/walk_slow = SubResource( 7 )
+anims/jump_kick = SubResource( 6 )
+anims/kick = SubResource( 7 )
+anims/punch = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/shoot = SubResource( 10 )
+anims/walk = SubResource( 11 )
+anims/walk_slow = SubResource( 12 )
 [connection signal="area_entered" from="DoorDetector" to="." method="_on_door_area_entered"]

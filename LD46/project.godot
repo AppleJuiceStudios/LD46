@@ -39,7 +39,7 @@ window/stretch/shrink=2.0
 [layer_names]
 
 2d_physics/layer_1="intruders"
-2d_physics/layer_2="door_breach_points"
+2d_physics/layer_2="breach_points"
 2d_physics/layer_3="vacuum_robot"
 
 [rendering]

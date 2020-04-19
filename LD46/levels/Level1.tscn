@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/PowerBar.tscn" type="PackedScene" id=10]
 [ext_resource path="res://objects/TargetServer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/PowerGenerator.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 6 )
@@ -52,6 +53,12 @@ nodeTileMap = NodePath("../TileMap")
 
 [node name="TargetServer" parent="Navigation2D" instance=ExtResource( 11 )]
 position = Vector2( 560, 272 )
+
+[node name="PowerGenerator" parent="Navigation2D" instance=ExtResource( 12 )]
+position = Vector2( 240, 48 )
+
+[node name="PowerGenerator2" parent="Navigation2D" instance=ExtResource( 12 )]
+position = Vector2( 208, 240 )
 
 [node name="RoombaLine" type="Line2D" parent="."]
 width = 2.0

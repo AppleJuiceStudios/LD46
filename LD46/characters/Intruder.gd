@@ -32,8 +32,6 @@ var _breaching_target : Area2D = null
 var _breaching_cooldow : = 0.0
 
 func _ready() -> void:
-	print("ready")
-	print(goal_path)
 	motivation_bar.max_value = max_motivation
 	motivation_bar.value = _motivation
 	pass

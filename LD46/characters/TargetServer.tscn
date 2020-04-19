@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/TargetServer.gd" type="Script" id=1]
+[ext_resource path="res://assets/icon.png" type="Texture" id=2]
+[ext_resource path="res://characters/TargetServerBreach.gd" type="Script" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 16 )
+
+[node name="TargetServer" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="BreachBox1" type="Area2D" parent="."]
+position = Vector2( 0, 24 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox1"]
+shape = SubResource( 1 )
+
+[node name="BreachBox2" type="Area2D" parent="."]
+position = Vector2( 0, -24 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox2"]
+shape = SubResource( 1 )
+
+[node name="BreachBox3" type="Area2D" parent="."]
+position = Vector2( -24, 0 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox3"]
+shape = SubResource( 1 )
+
+[node name="BreachBox4" type="Area2D" parent="."]
+position = Vector2( 24, 0 )
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox4"]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )

@@ -47,7 +47,7 @@ nodeTileMap = NodePath("../TileMap")
 position = Vector2( 432, 112 )
 nodeTileMap = NodePath("../TileMap")
 
-[node name="Line2D" type="Line2D" parent="."]
+[node name="RoombaLine" type="Line2D" parent="."]
 width = 2.0
 default_color = Color( 1, 0.4, 0.94902, 1 )
 

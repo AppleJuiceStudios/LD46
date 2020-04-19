@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://characters/Door_v.gd" type="Script" id=1]
 [ext_resource path="res://assets/door/v_closed.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 8, 48 )
 
 [node name="Door" type="Sprite"]
 texture = ExtResource( 2 )
@@ -87,6 +90,12 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DoorClosingCollision" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorClosingCollision"]
+shape = SubResource( 2 )
 [connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="ReferenceRect" to="." method="_hover_exited"]
 [connection signal="mouse_exited" from="HoverMenu" to="." method="_hover_exited"]
@@ -95,3 +104,5 @@ __meta__ = {
 [connection signal="pressed" from="HoverMenu/BtnReset" to="." method="_on_BtnReset_pressed"]
 [connection signal="mouse_exited" from="HoverMenu/BtnOpenClose" to="." method="_hover_exited"]
 [connection signal="pressed" from="HoverMenu/BtnOpenClose" to="." method="_on_BtnOpenClose_pressed"]
+[connection signal="area_entered" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_entered"]
+[connection signal="area_exited" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_exited"]

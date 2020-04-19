@@ -20,7 +20,6 @@ func get_heat(position : Vector2) -> float:
 
 func get_nav_pol_with_lowest_heat(cur_pos : Vector2, rand_noise : float) -> PoolVector2Array:
 	var map_coord : = _tile_map.world_to_map(cur_pos)
-	print(map_coord)
 	var min_heat : = 10000.0
 	var min_coord : = map_coord
 	var heat : = get_heat_if_navigatable(map_coord.x + 1, map_coord.y)

@@ -53,10 +53,6 @@ func _process(delta: float) -> void:
 			var nav_poly : PoolVector2Array = nav_2d.get_nav_pol_with_lowest_heat(global_position, 2.0)
 			_idle_target = get_random_point_in_polygon(nav_poly)
 			_path = nav_2d.get_simple_path(global_position, _idle_target)
-			if _path.empty():
-				print("Path error")
-			else:
-				print("Path success!")
 		
 		if _idle_target != Vector2.ZERO:
 			if start_move_along_path(speed_idle * delta):
@@ -70,7 +66,6 @@ func _process(delta: float) -> void:
 		_path = nav_2d.get_simple_path(global_position, _breaching_target.global_position)
 		if _path.empty():
 			_current_state = STATE_WALK_TO_GOAL
-			print("Path is empty")
 		else:
 			if start_move_along_path(speed * delta):
 				_breaching_cooldow = breaching_speed
@@ -126,9 +121,7 @@ func get_random_point_in_polygon(points : PoolVector2Array) -> Vector2:
 	var minY : = 10000.0
 	var maxX : = -10000.0
 	var maxY : = -10000.0
-	print("polygon:")
 	for i in range(points.size()):
-		print(points[i])
 		if points[i].x < minX:
 			minX = points[i].x
 		if points[i].y < minY:

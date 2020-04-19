@@ -40,7 +40,11 @@ func get_nav_pol_with_lowest_heat(cur_pos : Vector2, rand_noise : float) -> Pool
 		min_coord = Vector2(map_coord.x, map_coord.y - 1)
 	
 	var tile_index : = _tile_map.get_cellv(min_coord)
-	var nav_poly : = _tile_map.tile_set.tile_get_navigation_polygon(tile_index)	
+	var nav_poly : NavigationPolygon 
+	if _tile_map.tile_set.tile_get_tile_mode(tile_index) == TileSet.AUTO_TILE:
+		nav_poly = _tile_map.tile_set.autotile_get_navigation_polygon(tile_index, _tile_map.get_cell_autotile_coord(min_coord.x, min_coord.y))
+	else:
+		nav_poly = _tile_map.tile_set.tile_get_navigation_polygon(tile_index)
 	var points : = nav_poly.get_vertices()
 	var world_coord : = _tile_map.map_to_world(min_coord)
 	for i in range(points.size()):
@@ -49,7 +53,12 @@ func get_nav_pol_with_lowest_heat(cur_pos : Vector2, rand_noise : float) -> Pool
 
 func get_heat_if_navigatable(x : int, y : int) -> float:
 	var tile_index : = _tile_map.get_cell(x, y)
-	var nav_poly : = _tile_map.tile_set.tile_get_navigation_polygon(tile_index)
+	
+	var nav_poly : NavigationPolygon 
+	if _tile_map.tile_set.tile_get_tile_mode(tile_index) == TileSet.AUTO_TILE:
+		nav_poly = _tile_map.tile_set.autotile_get_navigation_polygon(tile_index, _tile_map.get_cell_autotile_coord(x, y))
+	else:
+		nav_poly = _tile_map.tile_set.tile_get_navigation_polygon(tile_index)
 	if nav_poly:
 		return heat_map[x][y]
 	return 10000.0

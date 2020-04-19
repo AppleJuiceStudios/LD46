@@ -8,7 +8,6 @@
 [ext_resource path="res://levels/PowerBar.gd" type="Script" id=6]
 [ext_resource path="res://levels/PowerTimer.gd" type="Script" id=7]
 
-
 [node name="Node2D" type="Node2D"]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
@@ -26,11 +25,9 @@ position = Vector2( 112, 144 )
 
 [node name="Door2" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 336, 48 )
-isOpen = false
 
 [node name="Door3" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 240, 48 )
-isOpen = false
 
 [node name="Door4" parent="Navigation2D" instance=ExtResource( 4 )]
 position = Vector2( 240, 272 )

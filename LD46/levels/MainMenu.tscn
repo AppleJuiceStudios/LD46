@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://assets/soundtrack.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/mainMenu/mainMenu_bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/mainMenu/level1.png" type="Texture" id=3]
+[ext_resource path="res://levels/MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://levels/Level1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/mainMenu/level3.png" type="Texture" id=6]
+[ext_resource path="res://assets/mainMenu/level2.png" type="Texture" id=7]
+[ext_resource path="res://assets/mainMenu/tutorial.png" type="Texture" id=8]
+[ext_resource path="res://assets/mainMenu/level4.png" type="Texture" id=9]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource( 4 )
+level1 = ExtResource( 5 )
+level2 = ExtResource( 5 )
+level3 = ExtResource( 5 )
+level4 = ExtResource( 5 )
+tutorial = ExtResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 576.0
+margin_bottom = 320.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLvl1" type="TextureButton" parent="."]
+margin_left = 136.0
+margin_top = 80.0
+margin_right = 271.0
+margin_bottom = 163.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLvl2" type="TextureButton" parent="."]
+margin_left = 312.0
+margin_top = 80.0
+margin_right = 447.0
+margin_bottom = 163.0
+texture_normal = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLvl3" type="TextureButton" parent="."]
+margin_left = 136.0
+margin_top = 184.0
+margin_right = 271.0
+margin_bottom = 267.0
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnLvl4" type="TextureButton" parent="."]
+margin_left = 312.0
+margin_top = 184.0
+margin_right = 447.0
+margin_bottom = 267.0
+texture_normal = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnTutorial" type="TextureButton" parent="."]
+margin_left = 168.0
+margin_top = 288.0
+margin_right = 411.0
+margin_bottom = 319.0
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="BtnLvl1" to="." method="_on_BtnLvl1_pressed"]
+[connection signal="pressed" from="BtnLvl2" to="." method="_on_BtnLvl2_pressed"]
+[connection signal="pressed" from="BtnLvl3" to="." method="_on_BtnLvl3_pressed"]
+[connection signal="pressed" from="BtnLvl4" to="." method="_on_BtnLvl4_pressed"]
+[connection signal="pressed" from="BtnTutorial" to="." method="_on_BtnTutorial_pressed"]

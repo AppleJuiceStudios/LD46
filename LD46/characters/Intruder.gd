@@ -113,6 +113,8 @@ func _process(delta: float) -> void:
 				change_state(STATE_BREACHING)
 	
 	elif _current_state == STATE_BREACHING:
+		if _motivation <= 0.0:
+			change_state(STATE_WALK_TO_GOAL)
 		if not _breaching_target.is_active():
 			change_state(STATE_WALK_TO_GOAL)
 			return

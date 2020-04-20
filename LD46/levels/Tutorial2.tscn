@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://levels/Tutorial.gd" type="Script" id=1]
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://characters/Door_v.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/tutorial_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://objects/Monitor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/Door_h.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/Speakers.tscn" type="PackedScene" id=7]
 
@@ -31,11 +32,14 @@ script = null
 
 [node name="LabelDoor" type="Label" parent="."]
 margin_left = 144.0
-margin_top = 128.0
+margin_top = 40.0
 margin_right = 272.0
-margin_bottom = 224.0
+margin_bottom = 261.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "These are doors. You know how they work, don't you? You can open them and close them.
+Intruders will try to hack the pin code that is protecting the door. There is a bar next to each one showing how far along they are. You can reset the code which will fill the bar back up. However it does cost you some power to do so. 
+Once the code is hacked the door will be breached and can no longer be operated."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -45,25 +49,30 @@ __meta__ = {
 position = Vector2( 528, 48 )
 
 [node name="LabelSpeakers" type="Label" parent="."]
-margin_left = 336.0
-margin_top = 48.0
+margin_left = 312.0
+margin_top = 32.0
 margin_right = 464.0
-margin_bottom = 144.0
+margin_bottom = 183.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "These are smart speakers. They are not as smart as you though. When playing some amazing tunes on them everyone in the vicinity will come together and party for a while. This gives a short moment of peace. It's just too nice to last. Go ahead and try to click on them now."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="LabelMonitor" type="Label" parent="."]
-margin_left = 336.0
-margin_top = 208.0
+margin_left = 312.0
+margin_top = 200.0
 margin_right = 464.0
-margin_bottom = 304.0
+margin_bottom = 323.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "This display will attract nearby intruders and show them a brainwashing hypnosis when clicked. After this disturbing jedi mind trick they will be on your side and no longer try to harm you. You can try clicking it now too."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Monitor" parent="." instance=ExtResource( 5 )]
+position = Vector2( 528, 208 )

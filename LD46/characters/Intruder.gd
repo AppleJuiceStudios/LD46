@@ -35,6 +35,7 @@ var _current_state : = STATE_WALK_TO_GOAL
 var _motivation : = max_motivation
 var _goal : Node2D
 var _returning_home : = false
+var _is_scared : = false
 var _path : = PoolVector2Array()
 var _idle_target : = Vector2.ZERO
 var _breaching_target : Area2D = null
@@ -46,7 +47,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	if _returning_home:
+	if _returning_home or _is_scared:
 		if global_position.distance_to(home.global_position) < 4:
 			queue_free()
 			return
@@ -58,7 +59,7 @@ func _process(delta: float) -> void:
 	motivation_bar.value = _motivation
 	
 	var last_goal = _goal
-	if _returning_home:
+	if _returning_home or _is_scared:
 		_goal = home
 	elif not detector_speaker.get_overlapping_areas().empty():
 		_goal = detector_speaker.get_overlapping_areas()[0]
@@ -130,6 +131,11 @@ func _process(delta: float) -> void:
 			change_state(STATE_WALK_TO_GOAL)
 		elif randf() < delta * 0.4:
 			update_animation()
+	
+	elif _current_state == STATE_WATCH_SCREEN:
+		annoy(delta * 5)
+		if detector_screen.get_overlapping_areas().empty():
+			change_state(STATE_WALK_TO_GOAL)
 
 func change_state(state) -> void:
 	if state == _current_state:
@@ -138,6 +144,9 @@ func change_state(state) -> void:
 		_breaching_target.breaching_intruder = null
 	if _current_state == STATE_WALK_TO_BREACH_POINT and (not state == STATE_BREACHING):
 		_breaching_target.breaching_intruder = null
+	if _current_state == STATE_WATCH_SCREEN:
+		if state != STATE_FALLING:
+			_is_scared = true
 	
 	if state == STATE_IDLE:
 		_idle_target = Vector2.ZERO
@@ -151,9 +160,15 @@ func change_state(state) -> void:
 
 func update_animation() -> void:
 	if _current_state == STATE_IDLE:
-		anim_player.play("walk", -1, 0.5)
+		if _is_scared:
+			anim_player.play("run_scared")
+		else:
+			anim_player.play("walk", -1, 0.5)
 	elif _current_state == STATE_WALK_TO_GOAL:
-		anim_player.play("walk")
+		if _is_scared:
+			anim_player.play("run_scared")
+		else:
+			anim_player.play("run")
 	elif _current_state == STATE_WALK_TO_BREACH_POINT:
 		anim_player.play("walk")
 	elif _current_state == STATE_BREACHING:
@@ -178,17 +193,19 @@ func update_animation() -> void:
 			anim_player.play("dance3")
 		elif i == 3:
 			anim_player.play("dance4")
+	elif _current_state == STATE_WATCH_SCREEN:
+		anim_player.play("idle")
 
 func check_interruptions() -> void:
 	if _current_state == STATE_FALLING:
 		return
 	if not detector_vacuum_robot.get_overlapping_areas().empty():
 		change_state(STATE_FALLING)
-	elif not detector_dance.get_overlapping_areas().empty():
+	elif not detector_dance.get_overlapping_areas().empty() and not _is_scared:
 		change_state(STATE_DANCE)
-	elif not detector_screen.get_overlapping_areas().empty():
+	elif not detector_screen.get_overlapping_areas().empty() and not _is_scared:
 		change_state(STATE_WATCH_SCREEN)
-	elif not detector_breach_point.get_overlapping_areas().empty():
+	elif not detector_breach_point.get_overlapping_areas().empty() and not _is_scared:
 		if _current_state != STATE_BREACHING and _current_state != STATE_WALK_TO_BREACH_POINT:
 			for area in detector_breach_point.get_overlapping_areas():
 				if area.breaching_intruder == null and area.is_active():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/intruder.png" type="Texture" id=1]
 [ext_resource path="res://characters/Intruder.gd" type="Script" id=2]
@@ -178,6 +178,23 @@ tracks/0/keys = {
 "values": [ 14, 15, 16, 17, 18, 19, 20 ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "run_scared"
+length = 0.7
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 210, 211, 212, 213, 214, 215, 216 ]
+}
+
 [sub_resource type="Animation" id=11]
 length = 0.7
 loop = true
@@ -231,7 +248,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -16 )
 vframes = 41
 hframes = 7
-frame = 28
+frame = 215
 script = ExtResource( 2 )
 
 [node name="BreachPointDetector" type="Area2D" parent="."]
@@ -293,6 +310,7 @@ anims/jump_kick = SubResource( 7 )
 anims/kick = SubResource( 8 )
 anims/punch = SubResource( 9 )
 anims/run = SubResource( 10 )
+anims/run_scared = SubResource( 18 )
 anims/shoot = SubResource( 11 )
 anims/walk = SubResource( 12 )
 anims/walk_slow = SubResource( 13 )

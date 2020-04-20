@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://characters/Door_h.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/VacuumRobot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/ai_playground.gd" type="Script" id=6]
+[ext_resource path="res://objects/Monitor.tscn" type="PackedScene" id=7]
 [ext_resource path="res://characters/Door_v.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/PowerBar.tscn" type="PackedScene" id=10]
@@ -63,6 +64,9 @@ position = Vector2( 208, 240 )
 
 [node name="Speakers" parent="Navigation2D" instance=ExtResource( 14 )]
 position = Vector2( 144, 48 )
+
+[node name="Monitor" parent="Navigation2D" instance=ExtResource( 7 )]
+position = Vector2( 176, 240 )
 
 [node name="RoombaLine" type="Line2D" parent="."]
 width = 2.0

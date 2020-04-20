@@ -100,7 +100,7 @@ func _on_BtnReset_pressed():
 		_updateTexture()
 
 func _on_BtnOpenClose_pressed():
-	if _bodyCount == 0 && PlayerData.power >= _powerMoveDoor:
+	if $DoorClosingCollision.get_overlapping_areas().size() == 0 && PlayerData.power >= _powerMoveDoor:
 		PlayerData.power -= _powerMoveDoor;
 		isOpen = !isOpen;
 		_updateTexture()

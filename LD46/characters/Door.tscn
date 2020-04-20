@@ -59,5 +59,3 @@ texture_normal = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="area_entered" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_entered"]
-[connection signal="area_exited" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_exited"]

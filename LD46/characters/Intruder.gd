@@ -136,6 +136,7 @@ func _process(delta: float) -> void:
 		annoy(delta * 5)
 		if detector_screen.get_overlapping_areas().empty():
 			change_state(STATE_WALK_TO_GOAL)
+			_is_scared = true
 
 func change_state(state) -> void:
 	if state == _current_state:
@@ -144,9 +145,6 @@ func change_state(state) -> void:
 		_breaching_target.breaching_intruder = null
 	if _current_state == STATE_WALK_TO_BREACH_POINT and (not state == STATE_BREACHING):
 		_breaching_target.breaching_intruder = null
-	if _current_state == STATE_WATCH_SCREEN:
-		if state != STATE_FALLING:
-			_is_scared = true
 	
 	if state == STATE_IDLE:
 		_idle_target = Vector2.ZERO
@@ -199,6 +197,9 @@ func update_animation() -> void:
 func check_interruptions() -> void:
 	if _current_state == STATE_FALLING:
 		return
+	if _current_state == STATE_WATCH_SCREEN:
+		if detector_screen.get_overlapping_areas().empty():
+			_is_scared = true
 	if not detector_vacuum_robot.get_overlapping_areas().empty():
 		change_state(STATE_FALLING)
 	elif not detector_dance.get_overlapping_areas().empty() and not _is_scared:
@@ -264,15 +265,3 @@ func motivation_spee_factor() -> float:
 
 func annoy(amount : float) -> void:
 	_motivation -= amount
-
-func _on_door_area_entered(area: Area2D) -> void:
-	if _current_state == STATE_WALK_TO_BREACH_POINT or _current_state == STATE_BREACHING:
-		return
-	if area.breaching_intruder != null or not area.is_active():
-		return
-	var path : = nav_2d.get_simple_path(global_position, area.global_position)
-	if get_path_length(path) < 2* 60:
-		area.breaching_intruder = self
-		_breaching_target = area
-		_current_state = STATE_WALK_TO_BREACH_POINT
-		update_animation()

@@ -82,7 +82,7 @@ tracks/0/keys = {
 "values": [ 154, 155, 156, 157, 158, 159, 160 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=19]
 resource_name = "fall"
 length = 2.4
 tracks/0/type = "value"
@@ -98,7 +98,7 @@ tracks/0/keys = {
 "values": [ 217, 218, 219, 220, 217, 218, 219, 113, 114, 115, 116, 118, 115, 36, 35, 34, 28 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=20]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -114,7 +114,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=21]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -130,7 +130,7 @@ tracks/0/keys = {
 "values": [ 28, 29, 30, 31 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=22]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -146,7 +146,7 @@ tracks/0/keys = {
 "values": [ 77, 78 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=23]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -162,7 +162,7 @@ tracks/0/keys = {
 "values": [ 70, 71 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=24]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -195,7 +195,7 @@ tracks/0/keys = {
 "values": [ 210, 211, 212, 213, 214, 215, 216 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=25]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -211,7 +211,7 @@ tracks/0/keys = {
 "values": [ 161, 162, 163, 164, 165, 166, 167 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=26]
 length = 0.7
 loop = true
 tracks/0/type = "value"
@@ -304,13 +304,13 @@ anims/dance1 = SubResource( 14 )
 anims/dance2 = SubResource( 15 )
 anims/dance3 = SubResource( 16 )
 anims/dance4 = SubResource( 17 )
-anims/fall = SubResource( 5 )
-anims/idle = SubResource( 6 )
-anims/jump_kick = SubResource( 7 )
-anims/kick = SubResource( 8 )
-anims/punch = SubResource( 9 )
-anims/run = SubResource( 10 )
+anims/fall = SubResource( 19 )
+anims/idle = SubResource( 20 )
+anims/jump_kick = SubResource( 21 )
+anims/kick = SubResource( 22 )
+anims/punch = SubResource( 23 )
+anims/run = SubResource( 24 )
 anims/run_scared = SubResource( 18 )
-anims/shoot = SubResource( 11 )
-anims/walk = SubResource( 12 )
+anims/shoot = SubResource( 25 )
+anims/walk = SubResource( 26 )
 anims/walk_slow = SubResource( 13 )

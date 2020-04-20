@@ -18,17 +18,6 @@ script = ExtResource( 1 )
 [node name="Status Bar" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -16.0
-margin_top = -16.0
-margin_right = -16.0
-margin_bottom = -16.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="BreachBox1" type="Area2D" parent="."]
 position = Vector2( -28, 0 )
 collision_layer = 2
@@ -47,61 +36,28 @@ script = ExtResource( 4 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox2"]
 shape = SubResource( 1 )
 
-[node name="HoverMenu" type="Popup" parent="."]
-visible = true
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 53.0
-margin_bottom = 28.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Panel" type="Panel" parent="HoverMenu"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 75.0
-margin_bottom = 50.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BtnReset" type="Button" parent="HoverMenu"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 75.0
-margin_bottom = 30.0
-icon = ExtResource( 5 )
-flat = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BtnOpenClose" type="Button" parent="HoverMenu"]
-margin_left = 10.0
-margin_top = 30.0
-margin_right = 75.0
-margin_bottom = 50.0
-icon = ExtResource( 6 )
-flat = true
-clip_text = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DoorClosingCollision" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DoorClosingCollision"]
 shape = SubResource( 2 )
-[connection signal="mouse_entered" from="ReferenceRect" to="." method="_on_Button_mouse_entered"]
-[connection signal="mouse_exited" from="ReferenceRect" to="." method="_hover_exited"]
-[connection signal="mouse_exited" from="HoverMenu" to="." method="_hover_exited"]
-[connection signal="mouse_exited" from="HoverMenu/Panel" to="." method="_hover_exited"]
-[connection signal="mouse_exited" from="HoverMenu/BtnReset" to="." method="_hover_exited"]
-[connection signal="pressed" from="HoverMenu/BtnReset" to="." method="_on_BtnReset_pressed"]
-[connection signal="mouse_exited" from="HoverMenu/BtnOpenClose" to="." method="_hover_exited"]
-[connection signal="pressed" from="HoverMenu/BtnOpenClose" to="." method="_on_BtnOpenClose_pressed"]
+
+[node name="BtnReset" type="TextureButton" parent="."]
+margin_right = 18.0
+margin_bottom = 18.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BtnOpenClose" type="TextureButton" parent="."]
+margin_left = -8.54375
+margin_top = 20.535
+margin_right = 9.45625
+margin_bottom = 38.535
+texture_normal = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="area_entered" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_entered"]
 [connection signal="area_exited" from="DoorClosingCollision" to="." method="_on_DoorClosingCollision_area_exited"]

@@ -4,6 +4,8 @@ export var tileNameFloorOpen : String
 export var tileNameFloorClosed : String
 
 func _ready():
+	mouse_area_X = 26
+	mouse_area_Y = 16
 	_tex_open     = preload("res://assets/door/h_open.png");
 	_tex_closed   = preload("res://assets/door/h_closed.png");
 	_tex_breached = preload("res://assets/door/h_breached.png");

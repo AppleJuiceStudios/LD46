@@ -25,14 +25,27 @@ onready var tileMap : TileMap = get_node(nodeTileMap);
 var idFloorOpen: int
 var idFloorClosed: int
 
+var mouse_area_X : float
+var mouse_area_Y : float
+
 func _ready():
+	$BtnOpenClose.visible = false
+	$BtnReset.visible = false
 	_updateTexture()
 	_setNavigatable(isOpen || isBreached);
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta: float) -> void:
+	var mouse = get_global_mouse_position();
+	if mouse.x >= global_position.x - mouse_area_X \
+			and mouse.x <= global_position.x + mouse_area_X \
+			and mouse.y >= global_position.y - mouse_area_Y \
+			and mouse.y <= global_position.y + mouse_area_Y:
+		$BtnReset.visible = true
+		$BtnOpenClose.visible = true
+	else:
+		$BtnReset.visible = false
+		$BtnOpenClose.visible = false
 
 func getting_hit() -> bool:
 	breachPointsLeft -= 1;
@@ -51,9 +64,9 @@ func _updateTexture() -> void:
 	else:
 		texture = _tex_closed;
 	if isOpen:
-		get_node("HoverMenu/BtnOpenClose").icon = _txt_close;
+		$BtnOpenClose.texture_normal = _txt_close;
 	else:
-		get_node("HoverMenu/BtnOpenClose").icon = _txt_open;
+		$BtnOpenClose.texture_normal = _txt_open;
 
 
 func _setNavigatable(value:bool) -> void:
@@ -92,20 +105,3 @@ func _on_BtnOpenClose_pressed():
 		isOpen = !isOpen;
 		_updateTexture()
 		_setNavigatable(isOpen || isBreached);
-
-func _on_Button_mouse_entered():
-	if !isBreached:
-		get_node("HoverMenu").popup(
-			Rect2(get_global_mouse_position() - Vector2(5,5),
-				 Vector2(65,40)));
-
-func _hover_exited():
-	if !get_node("HoverMenu").get_rect().has_point(get_global_mouse_position()):
-		get_node("HoverMenu").hide();
-
-
-func _on_DoorClosingCollision_area_entered(area):
-	_bodyCount += 1;
-	
-func _on_DoorClosingCollision_area_exited(area):
-	_bodyCount -= 1;

@@ -110,7 +110,7 @@ nav_2d_path = NodePath("../Navigation2D")
 
 [node name="Spawner2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 48, 192 )
-intervall_slope = -2.0
+intervall_slope = -0.5
 goal_path = NodePath("../Navigation2D/TargetServer")
 nav_2d_path = NodePath("../Navigation2D")
 

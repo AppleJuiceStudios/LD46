@@ -1,8 +1,8 @@
 extends Sprite
 
-var _tex_open     = preload("res://assets/door/open.png");
-var _tex_closed   = preload("res://assets/door/closed.png");
-var _tex_breached = preload("res://assets/door/breached.png");
+var _tex_open
+var _tex_closed
+var _tex_breached
 
 var _txt_open     = preload("res://assets/door/txt_OpenDoor.png");
 var _txt_close    = preload("res://assets/door/txt_CloseDoor.png");

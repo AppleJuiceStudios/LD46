@@ -1,12 +1,12 @@
 extends Node2D
 
 export var intervall_start : = 15.0
-export var intervall_end : = 4.0
-export var intervall_slope : = -0.3
+export var intervall_end : = 1.0
+export var intervall_slope : = -0.35
 export var motivation_start : = 60
 export var motivation_slope : = 2
 export var breaching_speed_start : = 1.5
-export var breaching_speed_end : = 0.1
+export var breaching_speed_end : = 0.4
 export var breaching_speed_slope : = -0.025
 
 export var goal_path : NodePath

@@ -15,6 +15,7 @@ extents = Vector2( 16, 16 )
 
 [node name="Door" type="Sprite"]
 texture = ExtResource( 2 )
+offset = Vector2( 0, -2 )
 script = ExtResource( 1 )
 tileNameFloorOpen = "door_h_open"
 tileNameFloorClosed = "door_h_closed"

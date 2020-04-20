@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/game_over.png" type="Texture" id=1]
+[ext_resource path="res://objects/ScoreDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/GameOver.gd" type="Script" id=3]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 288, 160 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="ScoreDisplay" parent="." instance=ExtResource( 2 )]
+position = Vector2( 464, 264 )

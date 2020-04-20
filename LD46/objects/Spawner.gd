@@ -31,12 +31,10 @@ func _process(delta: float) -> void:
 		_cool_down += time
 
 func spawn_intruder(motivation : float) -> void:
-	print("instance")
 	var pos : = Vector2(rand_range(-spawn_area_X, spawn_area_X), rand_range(-spawn_area_Y, spawn_area_Y))
 	var intruder : Node = intruder_scene.instance()
 	intruder.goal_path = goal_path
 	intruder.nav_2d_path = nav_2d_path
 	intruder.home_path = get_path()
 	intruder.global_position = global_position + pos
-	print("Add as child")
 	get_parent().add_child(intruder)

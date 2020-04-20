@@ -20,12 +20,10 @@ var _bodyCount = 0;
 var _powerMoveDoor = 10;
 var _powerResetDoor = 30;
 
-export var tileNameFloorOpen : String = "floor_walkable";
-export var tileNameFloorClosed : String = "floor_not_walkable";
 export var nodeTileMap : NodePath;
 onready var tileMap : TileMap = get_node(nodeTileMap);
-onready var idFloorOpen: int = tileMap.get_tileset().find_tile_by_name(tileNameFloorOpen);
-onready var idFloorClosed: int = tileMap.get_tileset().find_tile_by_name(tileNameFloorClosed);
+var idFloorOpen: int
+var idFloorClosed: int
 
 func _ready():
 	_updateTexture()

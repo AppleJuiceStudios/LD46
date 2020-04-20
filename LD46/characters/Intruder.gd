@@ -93,7 +93,7 @@ func _process(delta: float) -> void:
 				change_state(STATE_WALK_TO_GOAL)
 				return
 			
-			var nav_poly : PoolVector2Array = nav_2d.get_nav_pol_with_lowest_heat(global_position, 2.0)
+			var nav_poly : PoolVector2Array = nav_2d.get_nav_pol_with_lowest_heat(global_position, 1.5)
 			_idle_target = get_random_point_in_polygon(nav_poly)
 			_path = nav_2d.get_simple_path(global_position, _idle_target)
 		
@@ -113,6 +113,8 @@ func _process(delta: float) -> void:
 				change_state(STATE_BREACHING)
 	
 	elif _current_state == STATE_BREACHING:
+		if _motivation <= 0.0:
+			change_state(STATE_WALK_TO_GOAL)
 		if not _breaching_target.is_active():
 			change_state(STATE_WALK_TO_GOAL)
 			return
@@ -206,7 +208,7 @@ func check_interruptions() -> void:
 		change_state(STATE_DANCE)
 	elif not detector_screen.get_overlapping_areas().empty() and not _is_scared:
 		change_state(STATE_WATCH_SCREEN)
-	elif not detector_breach_point.get_overlapping_areas().empty() and not _is_scared:
+	elif not detector_breach_point.get_overlapping_areas().empty() and not _is_scared and _motivation > 0.0:
 		if _current_state != STATE_BREACHING and _current_state != STATE_WALK_TO_BREACH_POINT:
 			for area in detector_breach_point.get_overlapping_areas():
 				if area.breaching_intruder == null and area.is_active():

@@ -58,6 +58,7 @@ texture = ExtResource( 1 )
 hframes = 18
 frame = 16
 script = ExtResource( 2 )
+cost = 25.0
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0 )

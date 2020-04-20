@@ -4,6 +4,10 @@ onready var nav_2d : Navigation2D = $Navigation2D
 onready var line_2d : Line2D = $RoombaLine
 onready var character : Sprite = $VacuumRobot
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("ui_cancel"):
+		get_tree().change_scene("res://levels/MainMenu.tscn")
+
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
 		return

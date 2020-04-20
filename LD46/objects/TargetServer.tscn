@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://objects/TargetServer.gd" type="Script" id=1]
 [ext_resource path="res://assets/server.png" type="Texture" id=2]
@@ -22,6 +22,24 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "boosted"
+length = 0.72
+loop = true
+step = 0.08
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 12, 13, 14, 15, 16, 17 ]
 }
 
 [node name="TargetServer" type="Node2D"]
@@ -69,13 +87,30 @@ shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
-hframes = 9
-frame = 4
+hframes = 18
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "blink"
 anims/blink = SubResource( 2 )
+anims/boosted = SubResource( 3 )
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TimerScore" type="Timer" parent="."]
 autostart = true
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="TimerBoost" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Button" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="timeout" from="TimerScore" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="TimerBoost" to="." method="_end_boost"]
+[connection signal="pressed" from="Button" to="." method="_boost"]

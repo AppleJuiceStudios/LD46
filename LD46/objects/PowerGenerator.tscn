@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "broken"
 length = 0.1
 tracks/0/type = "value"
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 8, 8 )
 
 [node name="PowerGenerator" type="Sprite"]
@@ -52,7 +52,7 @@ texture = ExtResource( 3 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "blink"
 anims/blink = SubResource( 1 )
-anims/broken = SubResource( 3 )
+anims/broken = SubResource( 2 )
 
 [node name="BreachBox1" type="Area2D" parent="."]
 position = Vector2( 0, 24 )
@@ -61,4 +61,4 @@ collision_mask = 0
 script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BreachBox1"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )

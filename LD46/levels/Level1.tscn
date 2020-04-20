@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://characters/Door_h.tscn" type="PackedScene" id=4]
 [ext_resource path="res://objects/VacuumRobot.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/ai_playground.gd" type="Script" id=6]
-[ext_resource path="res://assets/soundtrack.ogg" type="AudioStream" id=7]
 [ext_resource path="res://characters/Door_v.tscn" type="PackedScene" id=8]
 [ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/PowerBar.tscn" type="PackedScene" id=10]
@@ -77,10 +76,6 @@ speed = 100.0
 position = Vector2( 48, 192 )
 goal_path = NodePath("../Navigation2D/TargetServer")
 nav_2d_path = NodePath("../Navigation2D")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 7 )
-autoplay = true
 
 [node name="Score" parent="." instance=ExtResource( 3 )]
 margin_left = 360.0

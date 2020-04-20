@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/speaker_jass.ogg-18069113a678b0677bad8e61ad353e7e.oggstr"
+
+[deps]
+
+source_file="res://assets/sound/speaker_jass.ogg"
+dest_files=[ "res://.import/speaker_jass.ogg-18069113a678b0677bad8e61ad353e7e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

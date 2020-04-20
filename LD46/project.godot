@@ -22,6 +22,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 PlayerData="*res://characters/PlayerData.gd"
+SoundTrack="*res://levels/SoundTrack.tscn"
 
 [debug]
 

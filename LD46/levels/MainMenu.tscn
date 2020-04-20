@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/soundtrack.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/mainMenu/mainMenu_bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/mainMenu/level1.png" type="Texture" id=3]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=4]
@@ -18,10 +17,6 @@ level2 = ExtResource( 5 )
 level3 = ExtResource( 5 )
 level4 = ExtResource( 5 )
 tutorial = ExtResource( 10 )
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 1 )
-autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 576.0

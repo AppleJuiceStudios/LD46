@@ -33,7 +33,7 @@ __meta__ = {
 }
 
 [node name="BreachBox1" type="Area2D" parent="."]
-position = Vector2( 0, 22 )
+position = Vector2( 0, 20 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 4 )
@@ -42,7 +42,7 @@ script = ExtResource( 4 )
 shape = SubResource( 1 )
 
 [node name="BreachBox2" type="Area2D" parent="."]
-position = Vector2( 0, -22 )
+position = Vector2( 0, -20 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 4 )

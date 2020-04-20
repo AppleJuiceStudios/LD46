@@ -1,6 +1,6 @@
 extends Node2D
 
-export var lifePoints = 30;
+export var lifePoints = 5;
 var isBreached = false;
 
 var defeatScene: PackedScene = load("res://levels/GameOver.tscn")

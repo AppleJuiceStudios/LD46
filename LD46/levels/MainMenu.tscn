@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/mainMenu/button_1_idle1.png" type="Texture" id=1]
+=======
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://levels/Level2.tscn" type="PackedScene" id=1]
+>>>>>>> e823d05e971c2fab418c3837d80080cb809f61e5
 [ext_resource path="res://assets/mainMenu/mainMenu_bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/mainMenu/button_1_idle7.png" type="Texture" id=3]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=4]
@@ -10,16 +16,21 @@
 [ext_resource path="res://assets/mainMenu/tutorial.png" type="Texture" id=8]
 [ext_resource path="res://assets/mainMenu/button_1_idle8.png" type="Texture" id=9]
 [ext_resource path="res://levels/Tutorial1.tscn" type="PackedScene" id=10]
+<<<<<<< HEAD
 [ext_resource path="res://assets/mainMenu/button_1_idle5.png" type="Texture" id=11]
 [ext_resource path="res://assets/mainMenu/button_1_idle4.png" type="Texture" id=12]
 [ext_resource path="res://assets/mainMenu/button_1_idle3.png" type="Texture" id=13]
+=======
+[ext_resource path="res://levels/Level3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Level4.tscn" type="PackedScene" id=12]
+>>>>>>> e823d05e971c2fab418c3837d80080cb809f61e5
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 4 )
 level1 = ExtResource( 5 )
-level2 = ExtResource( 5 )
-level3 = ExtResource( 5 )
-level4 = ExtResource( 5 )
+level2 = ExtResource( 1 )
+level3 = ExtResource( 11 )
+level4 = ExtResource( 12 )
 tutorial = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]

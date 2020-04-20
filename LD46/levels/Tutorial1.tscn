@@ -29,12 +29,14 @@ position = Vector2( 80, 112 )
 script = null
 
 [node name="LabelServer" type="Label" parent="."]
-margin_left = 144.0
-margin_top = 48.0
-margin_right = 272.0
-margin_bottom = 144.0
+margin_left = 152.0
+margin_top = 40.0
+margin_right = 280.0
+margin_bottom = 163.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "You are an AI named Dave running on this Server. You want to calculate all the prime numbers there are in the universe. Stay alive as long as possible to achive your goal."
+align = 1
+valign = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,11 +48,12 @@ script = null
 
 [node name="LabelIntruder" type="Label" parent="."]
 margin_left = 144.0
-margin_top = 208.0
-margin_right = 272.0
-margin_bottom = 304.0
+margin_top = 200.0
+margin_right = 280.0
+margin_bottom = 337.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "There are however dark forces that do not wish for you to live your dream. They will try to destroy your main power supply. Fortunately though they have quite limited patience (shown in the bar above)."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,12 +64,13 @@ position = Vector2( 528, 48 )
 script = null
 
 [node name="LabelPowerGenerator" type="Label" parent="."]
-margin_left = 336.0
+margin_left = 328.0
 margin_top = 48.0
-margin_right = 464.0
+margin_right = 456.0
 margin_bottom = 144.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "This is a power distribution board. It allows you to restore your power bar a little quicker. Therefore, intruders really like to break these.  "
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -77,12 +81,13 @@ position = Vector2( 528, 272 )
 script = null
 
 [node name="LabelVacuumRobot" type="Label" parent="."]
-margin_left = 336.0
-margin_top = 208.0
+margin_left = 328.0
+margin_top = 200.0
 margin_right = 464.0
-margin_bottom = 304.0
+margin_bottom = 323.0
 custom_fonts/font = ExtResource( 4 )
-text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+text = "IoT really is a magical thing. This little vacuum robot can be repurposed as a very useful weapon. Drive it into the enemy by clicking on the screen to make them tripp and fall. This will be quite annoying for them."
+align = 1
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false

@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/Door.gd" type="Script" id=1]
-[ext_resource path="res://assets/door/closed.png" type="Texture" id=2]
 [ext_resource path="res://assets/door/bar_4.png" type="Texture" id=3]
 [ext_resource path="res://characters/DoorBreaching.gd" type="Script" id=4]
 [ext_resource path="res://assets/door/txt_ResetDoor.png" type="Texture" id=5]
@@ -14,7 +13,6 @@ extents = Vector2( 8, 8 )
 extents = Vector2( 8, 16 )
 
 [node name="Door" type="Sprite"]
-texture = ExtResource( 2 )
 script = ExtResource( 1 )
 
 [node name="Status Bar" type="Sprite" parent="."]

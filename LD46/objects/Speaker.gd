@@ -14,6 +14,10 @@ func _on_Button_pressed() -> void:
 		$AnimationPlayer.play("play_sounds")
 		$AreaDance.monitorable = true
 		$AreaSpeaker.monitorable = true
+		if randf() < 0.5:
+			$SongJass.play()
+		else:
+			$SongTechno.play()
 
 
 func _on_Timer_timeout() -> void:
@@ -21,3 +25,5 @@ func _on_Timer_timeout() -> void:
 	$AnimationPlayer.play("silent")
 	$AreaDance.monitorable = false
 	$AreaSpeaker.monitorable = false
+	$SongJass.stop()
+	$SongTechno.stop()

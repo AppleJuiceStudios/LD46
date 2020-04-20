@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
+[ext_resource path="res://levels/Level2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/mainMenu/mainMenu_bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/mainMenu/level1.png" type="Texture" id=3]
 [ext_resource path="res://levels/MainMenu.gd" type="Script" id=4]
@@ -9,13 +10,15 @@
 [ext_resource path="res://assets/mainMenu/tutorial.png" type="Texture" id=8]
 [ext_resource path="res://assets/mainMenu/level4.png" type="Texture" id=9]
 [ext_resource path="res://levels/Tutorial1.tscn" type="PackedScene" id=10]
+[ext_resource path="res://levels/Level3.tscn" type="PackedScene" id=11]
+[ext_resource path="res://levels/Level4.tscn" type="PackedScene" id=12]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 4 )
 level1 = ExtResource( 5 )
-level2 = ExtResource( 5 )
-level3 = ExtResource( 5 )
-level4 = ExtResource( 5 )
+level2 = ExtResource( 1 )
+level3 = ExtResource( 11 )
+level4 = ExtResource( 12 )
 tutorial = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]

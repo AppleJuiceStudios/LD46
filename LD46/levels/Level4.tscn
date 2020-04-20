@@ -1,0 +1,101 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://levels/NavigationHeatMap.gd" type="Script" id=2]
+[ext_resource path="res://characters/Door_h.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/VacuumRobot.tscn" type="PackedScene" id=5]
+[ext_resource path="res://levels/ai_playground.gd" type="Script" id=6]
+[ext_resource path="res://objects/Monitor.tscn" type="PackedScene" id=7]
+[ext_resource path="res://characters/Door_v.tscn" type="PackedScene" id=8]
+[ext_resource path="res://objects/Spawner.tscn" type="PackedScene" id=9]
+[ext_resource path="res://characters/PowerBar.tscn" type="PackedScene" id=10]
+[ext_resource path="res://objects/TargetServer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://objects/PowerGenerator.tscn" type="PackedScene" id=12]
+[ext_resource path="res://objects/ScoreDisplay.tscn" type="PackedScene" id=13]
+[ext_resource path="res://objects/Speakers.tscn" type="PackedScene" id=14]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Navigation2D" type="Navigation2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="Navigation2D"]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 32
+cell_custom_transform = Transform2D( 0, 0, 0, 0, 0, 0 )
+format = 1
+tile_data = PoolIntArray( 1, 0, 720905, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 196609, 8, 0, 196609, 9, 0, 196609, 10, 0, 196609, 11, 0, 196609, 12, 0, 196609, 13, 0, 196609, 14, 0, 196609, 15, 0, 196609, 16, 0, 196609, 17, 0, 196609, 18, 0, 196609, 19, 0, 196609, 20, 0, 458755, 65537, 0, 589832, 65538, 0, 262144, 65539, 0, 262148, 65540, 0, 524292, 65541, 0, 786432, 65542, 0, 262148, 65543, 0, 786436, 65544, 0, 786436, 65545, 0, 786436, 65546, 0, 786436, 65547, 0, 786436, 65548, 0, 524292, 65549, 0, 786432, 65550, 0, 262148, 65551, 0, 786436, 65552, 0, 786436, 65553, 0, 786436, 65554, 0, 524292, 65555, 0, 524288, 65556, 0, 393218, 131073, 0, 65544, 131074, 0, 262146, 131075, 8, 1, 131076, 8, 3, 131077, 0, 786442, 131078, 8, 1, 131079, 8, 2, 131080, 8, 131073, 131081, 8, 65541, 131082, 8, 131072, 131083, 8, 2, 131084, 8, 3, 131085, 0, 786446, 131086, 8, 1, 131087, 8, 2, 131088, 8, 2, 131089, 8, 2, 131090, 8, 3, 131091, 0, 524296, 131092, 0, 393218, 196608, 0, 589833, 196609, 0, 65536, 196610, 0, 393218, 196611, 8, 8, 196612, 8, 4, 196613, 0, 720906, 196614, 8, 7, 196615, 8, 6, 196616, 8, 5, 196617, 0, 458763, 196618, 8, 8, 196619, 8, 0, 196620, 8, 14, 196621, 8, 65541, 196622, 8, 65545, 196623, 8, 0, 196624, 8, 0, 196625, 8, 0, 196626, 8, 4, 196627, 0, 589832, 196628, 0, 393218, 262144, 0, 851976, 262145, 0, 262148, 262146, 0, 917510, 262147, 8, 8, 262148, 8, 4, 262149, 0, 983052, 262150, 0, 917511, 262152, 0, 851981, 262153, 0, 983046, 262154, 8, 8, 262155, 8, 0, 262156, 8, 4, 262157, 0, 983051, 262158, 8, 131079, 262159, 8, 6, 262160, 8, 6, 262161, 8, 65548, 262162, 8, 5, 262163, 0, 65544, 262164, 0, 393218, 327680, 0, 851978, 327681, 8, 1, 327682, 8, 2, 327683, 8, 9, 327684, 8, 14, 327685, 8, 65541, 327686, 8, 131072, 327687, 8, 2, 327688, 8, 131073, 327689, 8, 65541, 327690, 8, 131081, 327691, 8, 65548, 327692, 8, 5, 327693, 0, 458762, 327694, 8, 65540, 327695, 0, 983049, 327696, 0, 458759, 327697, 8, 65540, 327698, 0, 589837, 327699, 0, 589824, 327700, 0, 393218, 393216, 0, 720906, 393217, 8, 7, 393218, 8, 6, 393219, 8, 65544, 393220, 8, 4, 393221, 0, 720907, 393222, 8, 7, 393223, 8, 6, 393224, 8, 5, 393225, 0, 458761, 393226, 0, 458759, 393227, 8, 65540, 393228, 0, 851981, 393229, 0, 983046, 393230, 8, 65540, 393231, 0, 851978, 393232, 8, 1, 393233, 8, 11, 393234, 8, 3, 393235, 0, 524296, 393236, 0, 393218, 458752, 0, 720904, 458753, 0, 131073, 458754, 0, 458755, 458755, 8, 8, 458756, 8, 4, 458757, 0, 983052, 458758, 0, 917511, 458760, 0, 589837, 458761, 0, 851970, 458762, 8, 1, 458763, 8, 11, 458764, 8, 2, 458765, 8, 2, 458766, 8, 131076, 458767, 0, 983050, 458768, 8, 8, 458769, 8, 0, 458770, 8, 4, 458771, 0, 589832, 458772, 0, 393218, 524288, 0, 589836, 524289, 0, 524288, 524290, 0, 393218, 524291, 8, 8, 524292, 8, 10, 524293, 8, 2, 524294, 8, 2, 524295, 8, 2, 524296, 8, 3, 524297, 0, 917518, 524298, 8, 8, 524299, 8, 0, 524300, 8, 0, 524301, 8, 0, 524302, 8, 4, 524303, 0, 720906, 524304, 8, 7, 524305, 8, 6, 524306, 8, 5, 524307, 0, 65544, 524308, 0, 393218, 589825, 0, 524296, 589826, 0, 131074, 589827, 8, 7, 589828, 8, 6, 589829, 8, 6, 589830, 8, 6, 589831, 8, 6, 589832, 8, 131082, 589833, 8, 65541, 589834, 8, 131081, 589835, 8, 6, 589836, 8, 6, 589837, 8, 6, 589838, 8, 5, 589839, 0, 196616, 589840, 0, 131073, 589841, 0, 196609, 589842, 0, 65537, 589843, 0, 65536, 589844, 0, 393218, 655361, 0, 589832, 655362, 0, 131072, 655363, 0, 131073, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 65537, 655375, 0, 65536, 655376, 0, 0, 655377, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 393218, 720897, 0, 851980, 720898, 0, 786436, 720899, 0, 786436, 720900, 0, 786436, 720901, 0, 786436, 720902, 0, 786436, 720903, 0, 786436, 720904, 0, 786436, 720905, 0, 786436, 720906, 0, 786436, 720907, 0, 786436, 720908, 0, 786436, 720909, 0, 786436, 720910, 0, 786436, 720911, 0, 786436, 720912, 0, 786436, 720913, 0, 786436, 720914, 0, 786436, 720915, 0, 786436, 720916, 0, 917510 )
+
+[node name="Door1" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 368, 208 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door2" parent="Navigation2D" instance=ExtResource( 8 )]
+position = Vector2( 176, 176 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door3" parent="Navigation2D" instance=ExtResource( 8 )]
+position = Vector2( 304, 304 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door4" parent="Navigation2D" instance=ExtResource( 8 )]
+position = Vector2( 304, 80 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door5" parent="Navigation2D" instance=ExtResource( 8 )]
+position = Vector2( 432, 112 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door6" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 560, 176 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="Door7" parent="Navigation2D" instance=ExtResource( 4 )]
+position = Vector2( 240, 240 )
+nodeTileMap = NodePath("../TileMap")
+
+[node name="TargetServer" parent="Navigation2D" instance=ExtResource( 11 )]
+position = Vector2( 560, 240 )
+
+[node name="PowerGenerator" parent="Navigation2D" instance=ExtResource( 12 )]
+position = Vector2( 240, 48 )
+
+[node name="PowerGenerator2" parent="Navigation2D" instance=ExtResource( 12 )]
+position = Vector2( 208, 240 )
+
+[node name="Speakers" parent="Navigation2D" instance=ExtResource( 14 )]
+position = Vector2( 144, 48 )
+
+[node name="Monitor" parent="Navigation2D" instance=ExtResource( 7 )]
+position = Vector2( 176, 240 )
+
+[node name="RoombaLine" type="Line2D" parent="."]
+width = 2.0
+default_color = Color( 1, 0.4, 0.94902, 1 )
+
+[node name="VacuumRobot" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, 184 )
+speed = 100.0
+
+[node name="Spawner" parent="." instance=ExtResource( 9 )]
+position = Vector2( 48, 192 )
+goal_path = NodePath("../Navigation2D/TargetServer")
+nav_2d_path = NodePath("../Navigation2D")
+
+[node name="ScoreDisplay" parent="." instance=ExtResource( 13 )]
+position = Vector2( 600, 314 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="PowerBar" parent="." instance=ExtResource( 10 )]
+margin_left = 624.0
+margin_top = 248.0
+margin_right = 752.0
+margin_bottom = 264.0
+rect_rotation = 270.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 76, 20 )
+anchor_mode = 0
+current = true

@@ -1,0 +1,89 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://levels/Tutorial.gd" type="Script" id=1]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://objects/TargetServer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/tutorial_font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://levels/Tutorial2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://characters/Intruder.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/VacuumRobot.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/PowerGenerator.tscn" type="PackedScene" id=8]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+next_scene = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 0, 0, 720905, 1, 0, 196609, 2, 0, 196609, 3, 0, 196609, 4, 0, 196609, 5, 0, 196609, 6, 0, 196609, 7, 0, 196609, 8, 0, 196609, 9, 0, 196609, 10, 0, 196609, 11, 0, 196609, 12, 0, 196609, 13, 0, 196609, 14, 0, 196609, 15, 0, 196609, 16, 0, 196609, 17, 0, 196609, 18, 0, 458755, 65536, 0, 851976, 65537, 0, 262148, 65538, 0, 786436, 65539, 0, 524292, 65540, 0, 524288, 65541, 0, 0, 65542, 0, 0, 65543, 0, 0, 65544, 0, 0, 65545, 0, 0, 65546, 0, 0, 65547, 0, 0, 65548, 0, 0, 65549, 0, 0, 65550, 0, 262144, 65551, 0, 262148, 65552, 0, 786436, 65553, 0, 524292, 65554, 0, 917506, 131072, 0, 851978, 131073, 8, 1, 131074, 8, 2, 131075, 8, 3, 131076, 0, 524296, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 0, 0, 131083, 0, 0, 131084, 0, 0, 131085, 0, 0, 131086, 0, 262146, 131087, 8, 1, 131088, 8, 2, 131089, 8, 3, 131090, 0, 917514, 196608, 0, 983050, 196609, 8, 8, 196610, 8, 0, 196611, 8, 4, 196612, 0, 589832, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 393218, 196623, 8, 8, 196624, 8, 0, 196625, 8, 4, 196626, 0, 983050, 262144, 0, 720906, 262145, 8, 7, 262146, 8, 6, 262147, 8, 5, 262148, 0, 65544, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 262154, 0, 0, 262155, 0, 0, 262156, 0, 0, 262157, 0, 0, 262158, 0, 131074, 262159, 8, 7, 262160, 8, 6, 262161, 8, 5, 262162, 0, 458762, 327680, 0, 720904, 327681, 0, 131073, 327682, 0, 196609, 327683, 0, 65537, 327684, 0, 65536, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 327690, 0, 0, 327691, 0, 0, 327692, 0, 0, 327693, 0, 0, 327694, 0, 131072, 327695, 0, 131073, 327696, 0, 196609, 327697, 0, 65537, 327698, 0, 458754, 393216, 0, 851976, 393217, 0, 262148, 393218, 0, 786436, 393219, 0, 524292, 393220, 0, 524288, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0, 393230, 0, 262144, 393231, 0, 262148, 393232, 0, 786436, 393233, 0, 524292, 393234, 0, 917506, 458752, 0, 851978, 458753, 8, 1, 458754, 8, 2, 458755, 8, 3, 458756, 0, 524296, 458757, 0, 0, 458758, 0, 0, 458759, 0, 0, 458760, 0, 0, 458761, 0, 0, 458762, 0, 0, 458763, 0, 0, 458764, 0, 0, 458765, 0, 0, 458766, 0, 262146, 458767, 8, 1, 458768, 8, 2, 458769, 8, 3, 458770, 0, 917514, 524288, 0, 983050, 524289, 8, 8, 524290, 8, 0, 524291, 8, 4, 524292, 0, 589832, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 393218, 524303, 8, 8, 524304, 8, 0, 524305, 8, 4, 524306, 0, 983050, 589824, 0, 720906, 589825, 8, 7, 589826, 8, 6, 589827, 8, 5, 589828, 0, 65544, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 131074, 589839, 8, 7, 589840, 8, 6, 589841, 8, 5, 589842, 0, 458762, 655360, 0, 720904, 655361, 0, 131073, 655362, 0, 196609, 655363, 0, 65537, 655364, 0, 65536, 655365, 0, 0, 655366, 0, 0, 655367, 0, 0, 655368, 0, 0, 655369, 0, 0, 655370, 0, 0, 655371, 0, 0, 655372, 0, 0, 655373, 0, 0, 655374, 0, 131072, 655375, 0, 131073, 655376, 0, 196609, 655377, 0, 65537, 655378, 0, 458754, 720896, 0, 851980, 720897, 0, 786436, 720898, 0, 786436, 720899, 0, 786436, 720900, 0, 786436, 720901, 0, 786436, 720902, 0, 786436, 720903, 0, 786436, 720904, 0, 786436, 720905, 0, 786436, 720906, 0, 786436, 720907, 0, 786436, 720908, 0, 786436, 720909, 0, 786436, 720910, 0, 786436, 720911, 0, 786436, 720912, 0, 786436, 720913, 0, 786436, 720914, 0, 917510 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 12, 20 )
+anchor_mode = 0
+current = true
+
+[node name="TargetServer" parent="." instance=ExtResource( 3 )]
+position = Vector2( 80, 112 )
+script = null
+
+[node name="LabelServer" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 48.0
+margin_right = 272.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 4 )
+text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Intruder" parent="." instance=ExtResource( 6 )]
+position = Vector2( 80, 288 )
+script = null
+
+[node name="LabelIntruder" type="Label" parent="."]
+margin_left = 144.0
+margin_top = 208.0
+margin_right = 272.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 4 )
+text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PowerGenerator" parent="." instance=ExtResource( 8 )]
+position = Vector2( 528, 48 )
+script = null
+
+[node name="LabelPowerGenerator" type="Label" parent="."]
+margin_left = 336.0
+margin_top = 48.0
+margin_right = 464.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 4 )
+text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VacuumRobot" parent="." instance=ExtResource( 7 )]
+position = Vector2( 528, 272 )
+script = null
+
+[node name="LabelVacuumRobot" type="Label" parent="."]
+margin_left = 336.0
+margin_top = 208.0
+margin_right = 464.0
+margin_bottom = 304.0
+custom_fonts/font = ExtResource( 4 )
+text = "You are an AI running on this Server. Stay alive as long as possible to generate as many prime numbers as possible."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

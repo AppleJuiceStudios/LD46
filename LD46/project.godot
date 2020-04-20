@@ -23,6 +23,7 @@ config/icon="res://assets/icon.png"
 
 PlayerData="*res://characters/PlayerData.gd"
 SoundTrack="*res://levels/SoundTrack.tscn"
+Primes="*res://levels/Primes.gd"
 
 [debug]
 

@@ -21,9 +21,9 @@
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 4 )
 level1 = ExtResource( 5 )
-level2 = ExtResource( 15 )
-level3 = ExtResource( 16 )
-level4 = ExtResource( 17 )
+level2 = ExtResource( 17 )
+level3 = ExtResource( 15 )
+level4 = ExtResource( 16 )
 tutorial = ExtResource( 10 )
 
 [node name="TextureRect" type="TextureRect" parent="."]

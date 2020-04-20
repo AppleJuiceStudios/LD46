@@ -16,8 +16,8 @@ onready var nav_2d : Navigation2D = get_node(nav_2d_path)
 
 onready var intruder_scene : = preload("res://characters/Intruder.tscn")
 
-var spawn_area_X : = 8
-var spawn_area_Y : = 24
+export var spawn_area_X : = 8
+export var spawn_area_Y : = 24
 
 var _cool_down : = 0.0
 var _spawn_counter : = 0

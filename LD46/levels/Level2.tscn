@@ -83,14 +83,16 @@ position = Vector2( 368, 324 )
 speed = 100.0
 
 [node name="Spawner" parent="." instance=ExtResource( 9 )]
-position = Vector2( 56, 150 )
+position = Vector2( 48, 152 )
 goal_path = NodePath("../Navigation2D/TargetServer")
 nav_2d_path = NodePath("../Navigation2D")
+spawn_area_Y = 10
 
 [node name="Spawner2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 665, 80 )
+position = Vector2( 656, 88 )
 goal_path = NodePath("../Navigation2D/TargetServer")
 nav_2d_path = NodePath("../Navigation2D")
+spawn_area_Y = 10
 
 [node name="ScoreDisplay" parent="." instance=ExtResource( 13 )]
 position = Vector2( 600, 314 )

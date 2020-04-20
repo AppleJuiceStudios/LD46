@@ -45,6 +45,7 @@ func spawn_intruder(motivation : float, breaching_speed : float) -> void:
 	intruder.home_path = get_path()
 	intruder.global_position = global_position + pos
 	intruder.max_motivation = motivation
+	intruder.motivation = motivation
 	intruder.breaching_speed = breaching_speed
 	get_parent().add_child(intruder)
 	_spawn_counter += 1
